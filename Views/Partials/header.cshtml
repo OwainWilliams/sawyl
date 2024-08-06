@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    var siteSettings = Model.GetSiteSettings();
+}
+
+@if (!string.IsNullOrWhiteSpace(siteSettings.SiteName))
+{   
+    @siteSettings.SiteName
+}
+
+@await Html.PartialAsync("navigation")
