@@ -30,6 +30,11 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		bool IsIndexable { get; }
 
+		/// <summary>Meta Author</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		string MetaAuthor { get; }
+
 		/// <summary>Meta Description</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
@@ -93,6 +98,19 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		/// <summary>Static getter for Is Indexable</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		public static bool GetIsIndexable(ISEoproperties that, IPublishedValueFallback publishedValueFallback) => that.Value<bool>(publishedValueFallback, "isIndexable");
+
+		///<summary>
+		/// Meta Author: This pages author(s).
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("metaAuthor")]
+		public virtual string MetaAuthor => GetMetaAuthor(this, _publishedValueFallback);
+
+		/// <summary>Static getter for Meta Author</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
+		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		public static string GetMetaAuthor(ISEoproperties that, IPublishedValueFallback publishedValueFallback) => that.Value<string>(publishedValueFallback, "metaAuthor");
 
 		///<summary>
 		/// Meta Description: Enter the meta description for this page.

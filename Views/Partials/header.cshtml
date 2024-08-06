@@ -4,7 +4,7 @@
     var siteSettings = Model.GetSiteSettings();
 }
 
-@if (!string.IsNullOrWhiteSpace(siteSettings.SiteName))
+@if (!string.IsNullOrWhiteSpace(siteSettings?.SiteName))
 {   
     @siteSettings.SiteName
 }

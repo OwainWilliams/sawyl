@@ -1,0 +1,30 @@
+﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+
+@{
+    string seoTitle = Model.Name;
+    string? seoDescription = String.Empty;
+    string? seoAuthor = String.Empty;
+
+    if (Model is ISEoproperties seoProperties)
+    {
+        if (!string.IsNullOrWhiteSpace(seoProperties.MetaTitle))
+        {   
+            seoTitle = seoProperties.MetaTitle;
+        }
+        seoDescription = seoProperties.MetaDescription;
+        seoAuthor = seoProperties.MetaAuthor;
+    }
+}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="title" content="@seoTitle" />
+    <meta name="description" content="@seoDescription" />
+    <meta name="keywords" content="">
+    <meta name="author" content="@(!string.IsNullOrWhiteSpace(seoAuthor) ? seoAuthor : "Sam Forrest")">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/main.css" />
+
+    <title>@Model.Name</title>
+</head>

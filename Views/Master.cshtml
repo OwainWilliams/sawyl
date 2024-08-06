@@ -4,6 +4,8 @@
 	Layout = null;
 }
 
+@await Html.PartialAsync("head")
+
 @await Html.PartialAsync("header")
 
 @RenderBody()

@@ -96,6 +96,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual bool IsIndexable => global::Umbraco.Cms.Web.Common.PublishedModels.SEoproperties.GetIsIndexable(this, _publishedValueFallback);
 
 		///<summary>
+		/// Meta Author: This pages author(s).
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("metaAuthor")]
+		public virtual string MetaAuthor => global::Umbraco.Cms.Web.Common.PublishedModels.SEoproperties.GetMetaAuthor(this, _publishedValueFallback);
+
+		///<summary>
 		/// Meta Description: Enter the meta description for this page.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]

@@ -1,0 +1,30 @@
+{
+  "name": "sawyl",
+  "version": "1.0.0",
+  "description": "my personal portfolio site (2024)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "cross-env NODE_ENV=development npx mix watch"
+  },
+  "keywords": [
+    "sawyl",
+    "sam",
+    "forrest",
+    "portfolio",
+    "blog",
+    "umbraco",
+    "dotnet"
+  ],
+  "author": "sam forrest",
+  "license": "ISC",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "laravel-mix": "^6.0.49"
+  },
+  "devDependencies": {
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.77.8",
+    "sass-loader": "^12.1.0"
+  }
+}
