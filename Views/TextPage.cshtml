@@ -1,0 +1,8 @@
+﻿@inherits UmbracoViewPage<TextPage>
+@{
+    Layout = "Master.cshtml";
+}
+
+@await Html.PartialAsync("components/banner", Model)
+
+@await Html.PartialAsync("components/richtext", Model)

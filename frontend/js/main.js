@@ -1,1 +1,1 @@
-console.log('testing');
+require('./animations');

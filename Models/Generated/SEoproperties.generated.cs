@@ -100,7 +100,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public static bool GetIsIndexable(ISEoproperties that, IPublishedValueFallback publishedValueFallback) => that.Value<bool>(publishedValueFallback, "isIndexable");
 
 		///<summary>
-		/// Meta Author: This pages author(s).
+		/// Meta Author: This pages author(s), defaults to "Sam Forrest"
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]

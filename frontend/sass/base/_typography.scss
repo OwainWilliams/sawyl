@@ -1,0 +1,42 @@
+@use '../utils/variables' as var;
+@import url('https://fonts.googleapis.com/css2?family=Rethink+Sans:ital,wght@0,400..800;1,400..800&display=swap');
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+    font-weight: var.$font-medium;
+    margin-bottom: .8rem;
+}
+
+.h1 {
+    font-size: 3.6rem;
+
+    @media (min-width: var.$lg) {
+        font-size: 4rem;
+    }
+}
+
+.h2 {
+    font-size: 3.2rem;
+
+    @media (min-width: var.$lg) {
+        font-size: 3.6rem;
+    }
+}
+
+.h3 {
+    font-size: 2.8rem;
+
+    @media (min-width: var.$lg) {
+        font-size: 3.2rem;
+    }
+}
+
+@for $i from 1 through 6 {
+    h#{$i} {
+        @extend .h#{$i};
+    }
+}

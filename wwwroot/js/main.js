@@ -1,13 +1,59 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./js/animations.js":
+/*!**************************!*\
+  !*** ./js/animations.js ***!
+  \**************************/
+/***/ (() => {
+
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+var animateLeft = document.querySelectorAll('.__animateleft');
+var animateRight = document.querySelectorAll('.__animateright');
+var animateUp = document.querySelectorAll('.__animateup');
+var animations = [].concat(_toConsumableArray(animateLeft), _toConsumableArray(animateRight));
+var messagesContainer = document.querySelector('.messages');
+var closeMessagesBtn = document.querySelectorAll('.messages-close');
+var setObserver = function setObserver(el, offset) {
+  var options = {
+    root: null,
+    rootMargin: "".concat(offset, "px"),
+    threshold: 0
+  };
+  var callback = function callback(entries, observer) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('__animate');
+        observer.unobserve(entry.target);
+      }
+    });
+  };
+  var animationObserver = new IntersectionObserver(callback, options);
+  el.forEach(function (e) {
+    animationObserver.observe(e);
+  });
+};
+
+// observer for animate left/right
+setObserver(animations, -75);
+
+// observer for animate up
+setObserver(animateUp, 0);
+
+/***/ }),
+
 /***/ "./js/main.js":
 /*!********************!*\
   !*** ./js/main.js ***!
   \********************/
-/***/ (() => {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-console.log('testing');
+__webpack_require__(/*! ./animations */ "./js/animations.js");
 
 /***/ }),
 

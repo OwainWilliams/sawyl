@@ -1,0 +1,25 @@
+﻿@inherits UmbracoViewPage<IBannerProperties>
+
+@{
+    string pageName = String.Empty;
+
+    if (Model is IPublishedContent publishedContent)
+    {
+        pageName = publishedContent.Name;
+    }
+}
+
+<section class="banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-10">
+                <h1 class="banner-title __animateleft">@(!string.IsNullOrWhiteSpace(Model.BannerTitle) ? Model.BannerTitle : pageName)</h1>
+
+                @if (Model.BannerSubtitle != null)
+                {
+                    <p class="banner-subtitle __animateleft">@Model.BannerSubtitle</p>
+                }
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
+</section>

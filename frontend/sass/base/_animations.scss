@@ -1,0 +1,40 @@
+@use '../utils/variables' as var;
+
+$animation-depth: 100px;
+$animation-depth-mobile: 25px;
+
+.__animateleft,
+.__animateright,
+.__animateup {
+    opacity: 0;
+    
+    &.__animate {
+        opacity: 1;
+        transform: translate(0, 0);
+        transition: all var.$transition-slow;
+    }
+}
+
+.__animateleft {
+    transform: translateX(-$animation-depth-mobile);
+
+    @media screen and (min-width: var.$lg) {
+        transform: translateX(-$animation-depth);
+    }
+}
+
+.__animateright {
+    transform: translateX($animation-depth-mobile);
+
+    @media screen and (min-width: var.$lg) {
+        transform: translateX($animation-depth);
+    }
+}
+
+.__animateup {
+    transform: translateY($animation-depth-mobile);
+
+    @media screen and (min-width: var.$lg) {
+        transform: translateY($animation-depth);
+    }
+}

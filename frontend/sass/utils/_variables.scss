@@ -1,0 +1,18 @@
+// typography variables
+$font-family: "Rethink Sans", sans-serif;
+$font-regular: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+// breakpoint variables - based on bootstrap breakpoints
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+// transition variables
+$transition-fast: .3s;
+$transition-mid: .5s;
+$transition-slow: 1s;

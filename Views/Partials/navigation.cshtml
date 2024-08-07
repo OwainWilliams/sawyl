@@ -1,3 +1,17 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
-<p>Nav</p>
+@{
+    var siteSettings = Model.GetSiteSettings();
+}
+
+<nav class="nav">
+    @if (siteSettings.MainNavigation.Any())
+    {   
+        foreach (var item in siteSettings.MainNavigation)
+        {
+            <li>
+                <a href="@item.Url">@item.Name</a>
+            </li>
+        }
+    }
+</nav>
