@@ -1,0 +1,28 @@
+@use '../utils/variables' as var;
+@use '../utils/mixins' as mix;
+@use '../components/richtext';
+
+.banner {
+    @media (min-width: var.$lg) {
+        margin-bottom: 7.2rem;
+    }
+    
+    &-content {
+        @extend .richtext;
+
+        @media (min-width: var.$lg) {
+            padding-right: 1.6rem;
+        }
+    }
+    
+    &--home {
+        @extend .banner;
+
+        .banner {
+            &-image {
+                @include mix.aspectRatio(4, 3);
+                @include mix.imageDecoration;
+            }
+        }
+    }
+}

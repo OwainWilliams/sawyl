@@ -66,6 +66,7 @@ h5,
 h6 {
   font-weight: 500;
   margin-bottom: 0.8rem;
+  line-height: 1.5;
 }
 
 .h1, h1 {
@@ -87,11 +88,20 @@ h6 {
 }
 
 .h3, h3 {
-  font-size: 2.8rem;
+  font-size: 2.4rem;
 }
 @media (min-width: 992px) {
   .h3, h3 {
     font-size: 3.2rem;
+  }
+}
+
+.h4, h4 {
+  font-size: 2rem;
+}
+@media (min-width: 992px) {
+  .h4, h4 {
+    font-size: 2.4rem;
   }
 }
 
@@ -102,20 +112,30 @@ html {
 body {
   font-size: 1.6rem;
   font-family: "Rethink Sans", sans-serif;
+  color: #131313;
 }
 
 a {
   transition: 0.3s;
+  color: #007F5F;
+  text-underline-offset: 2px;
+  text-decoration-thickness: 1px;
+  text-decoration-color: #007F5F;
+}
+a:hover, a:focus {
+  text-decoration: none;
 }
 
 .__animateleft,
 .__animateright,
-.__animateup {
+.__animateup,
+.__animatedown {
   opacity: 0;
 }
 .__animateleft.__animate,
 .__animateright.__animate,
-.__animateup.__animate {
+.__animateup.__animate,
+.__animatedown.__animate {
   opacity: 1;
   transform: translate(0, 0);
   transition: all 1s;
@@ -148,6 +168,35 @@ a {
   }
 }
 
+.__animatedown {
+  transform: translateY(-25px);
+}
+@media screen and (min-width: 992px) {
+  .__animatedown {
+    transform: translateY(-100px);
+  }
+}
+
+picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1.6rem;
+}
+
+@keyframes imageDecorationSlide {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(0.8rem, 0.8rem);
+  }
+}
 /*!
  * Bootstrap Grid v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors
@@ -4240,4 +4289,126 @@ a {
   .row {
     --bs-gutter-x: 4.8rem;
   }
+}
+
+.richtext p, .banner-content p {
+  line-height: 1.4;
+  font-size: 1.8rem;
+}
+.richtext p + p, .banner-content p + p {
+  margin-top: 1.6rem;
+}
+
+.listing + .listing, .listing--blog + .listing, .listing + .listing--blog, .listing--blog + .listing--blog {
+  margin-top: 2.4rem;
+}
+.listing-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #007F5F;
+  border-radius: 1.6rem;
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 1.125;
+}
+.listing-icon svg {
+  width: 7.2rem;
+  height: 7.2rem;
+  fill: #FCFCFC;
+}
+.listing-image {
+  aspect-ratio: 1.125;
+}
+.header {
+  padding: 2.4rem 0;
+}
+@media (min-width: 992px) {
+  .header {
+    margin-bottom: 2.4rem;
+  }
+}
+.header-title {
+  display: inline-block;
+  font-size: 2rem;
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+  font-weight: 500;
+  color: #131313;
+  text-underline-offset: 3px;
+  transition: all 0s;
+}
+.header-title:hover, .header-title:focus {
+  color: #007F5F;
+  text-decoration: underline;
+  text-decoration-color: #007F5F;
+}
+.header-title:hover, .header-title:focus {
+  text-decoration-thickness: 1px;
+}
+.header-subtitle {
+  color: #007F5F;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+@media (min-width: 992px) {
+  .nav {
+    justify-content: flex-end;
+  }
+}
+.nav-list {
+  display: flex;
+  gap: 2.4rem;
+}
+@media (min-width: 992px) {
+  .nav-list {
+    justify-content: flex-end;
+  }
+}
+.nav-item > a {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #131313;
+  text-underline-offset: 3px;
+  transition: all 0s;
+}
+.nav-item > a:hover, .nav-item > a:focus {
+  color: #007F5F;
+  text-decoration: underline;
+  text-decoration-color: #007F5F;
+}
+
+@media (min-width: 992px) {
+  .banner, .banner--home {
+    margin-bottom: 7.2rem;
+  }
+}
+@media (min-width: 992px) {
+  .banner-content {
+    padding-right: 1.6rem;
+  }
+}
+.banner--home .banner-image {
+  aspect-ratio: 1.3333333333;
+  position: relative;
+}
+.banner--home .banner-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1.6rem;
+  background: #007F5F;
+  animation-name: imageDecorationSlide;
+  animation-timing-function: cubic-bezier(0.175, 1.5, 0.32, 1.275);
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+  animation-delay: 1s;
+  z-index: -1;
 }

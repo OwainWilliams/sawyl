@@ -1,6 +1,7 @@
 const animateLeft = document.querySelectorAll('.__animateleft');
 const animateRight = document.querySelectorAll('.__animateright');
 const animateUp = document.querySelectorAll('.__animateup');
+const animateDown = document.querySelectorAll('.__animatedown');
 const animations = [...animateLeft, ...animateRight];
 const messagesContainer = document.querySelector('.messages');
 const closeMessagesBtn = document.querySelectorAll('.messages-close');
@@ -29,7 +30,10 @@ const setObserver = (el, offset) => {
 }
 
 // observer for animate left/right
-setObserver(animations, -75);
+setObserver(animations, 0);
 
 // observer for animate up
 setObserver(animateUp, 0);
+
+// observer for animate down
+setObserver(animateDown, 100);

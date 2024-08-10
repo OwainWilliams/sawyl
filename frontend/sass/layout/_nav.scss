@@ -1,0 +1,28 @@
+@use '../utils/variables' as var;
+@use '../utils/mixins' as mix;
+
+.nav {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    @media (min-width: var.$lg) {
+        justify-content: flex-end;
+    }
+
+    &-list {
+        display: flex;
+        gap: 2.4rem;
+        
+        @media (min-width: var.$lg) {
+            justify-content: flex-end;
+        }
+    }
+
+    &-item {
+        >a {
+            font-size: 1.8rem;
+            @include mix.menuItemStyles;
+        }
+    }
+}

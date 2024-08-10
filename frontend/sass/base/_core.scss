@@ -7,8 +7,18 @@ html {
 body {
     font-size: 1.6rem;
     font-family: var.$font-family;
+    color: var.$black;
 }
 
 a {
     transition: var.$transition-fast;
+    color: var.$accent;
+    text-underline-offset: 2px;
+    text-decoration-thickness: 1px;
+    text-decoration-color: var.$accent;
+
+    &:hover,
+    &:focus {
+        text-decoration: none;
+    }
 }

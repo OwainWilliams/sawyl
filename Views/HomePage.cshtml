@@ -3,5 +3,26 @@
 	Layout = "Master.cshtml";
 }
 
-@await Html.PartialAsync("components/banner", Model)
+@await Html.PartialAsync("components/homepageBanner", Model)
 
+@if (Model.FeaturedBlogs.Any())
+{
+	<section class="featured--blogs">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<header class="featured-header">
+						<h2 class="featured-title __animateleft">@(!string.IsNullOrWhiteSpace(Model.FeaturedBlogsTitle) ? Model.FeaturedBlogsTitle : "Featured blogs")</h2
+					</header>
+
+					<ul class="featured-list">
+						@foreach(BlogPage blogPage in Model.FeaturedBlogs)
+						{
+							@(await Html.PartialAsync("listing/blogListingCard", blogPage))
+						}
+					</ul>
+				</div><!-- col -->
+			</div><!-- row -->
+		</div><!-- container -->
+	</section>
+}

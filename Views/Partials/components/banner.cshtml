@@ -15,9 +15,11 @@
             <div class="col-lg-10">
                 <h1 class="banner-title __animateleft">@(!string.IsNullOrWhiteSpace(Model.BannerTitle) ? Model.BannerTitle : pageName)</h1>
 
-                @if (Model.BannerSubtitle != null)
+                @if (Model.BannerContent != null)
                 {
-                    <p class="banner-subtitle __animateleft">@Model.BannerSubtitle</p>
+                    <div class="banner-content __animateleft">
+                        @Model.BannerContent
+                    </div>
                 }
             </div><!-- col -->
         </div><!-- row -->

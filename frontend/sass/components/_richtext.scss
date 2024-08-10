@@ -1,0 +1,10 @@
+.richtext {
+    p {
+        line-height: 1.4;
+        font-size: 1.8rem;
+
+        + p {
+            margin-top: 1.6rem;
+        }
+    }
+}

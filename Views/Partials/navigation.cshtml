@@ -7,11 +7,19 @@
 <nav class="nav">
     @if (siteSettings.MainNavigation.Any())
     {   
-        foreach (var item in siteSettings.MainNavigation)
-        {
+        <ul class="nav-list">
+            @foreach (var item in siteSettings.MainNavigation)
+            {
+                <li class="nav-item">
+                    <a href="@item.Url">@item.Name</a>
+                </li>
+            }
+
             <li>
-                <a href="@item.Url">@item.Name</a>
+                <button>
+                    Dark mode
+                </button>
             </li>
-        }
+        </ul>
     }
 </nav>

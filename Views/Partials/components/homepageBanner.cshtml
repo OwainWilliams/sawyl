@@ -1,0 +1,40 @@
+﻿@inherits UmbracoViewPage<HomePage>
+
+@{
+    string pageName = String.Empty;
+
+    if (Model is IPublishedContent publishedContent)
+    {
+        pageName = publishedContent.Name;
+    }
+}
+
+<section class="banner--home">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7">
+                <h1 class="banner-title __animateleft">@(!string.IsNullOrWhiteSpace(Model.BannerTitle) ? Model.BannerTitle : pageName)</h1>
+
+                @if (Model.BannerContent != null)
+                {
+                    <div class="banner-content __animateleft">
+                        @Model.BannerContent
+                    </div>
+                }
+            </div><!-- col -->
+
+            <div class="col-lg-5">
+                @if (Model.BannerImage != null)
+                {
+                    <div class="banner-image __animateright">
+                        <picture>
+                            <source media="(min-width:992px)" srcset="@Model.BannerImage.GetCropUrl("HomepageBannerImageLarge")" />
+                            <source srcset="@Model.BannerImage.GetCropUrl("HomepageBannerImage")" />
+                            <img src="@Model.BannerImage.GetCropUrl("HomepageBannerImage")" />
+                        </picture>
+                    </div>
+                }
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
+</section>

@@ -4,9 +4,28 @@
     var siteSettings = Model.GetSiteSettings();
 }
 
-@if (!string.IsNullOrWhiteSpace(siteSettings?.SiteName))
-{   
-    @siteSettings.SiteName
-}
+<header class="header __animatedown">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                @if (!string.IsNullOrWhiteSpace(siteSettings?.SiteName) || !string.IsNullOrWhiteSpace(siteSettings?.SiteSubtitle))
+                {
+                    <div class="header-logo">
+                        @if (!string.IsNullOrWhiteSpace(siteSettings?.SiteName))
+                        {
+                            <a href="/" class="header-title">@siteSettings.SiteName</a>
+                        }
 
-@await Html.PartialAsync("navigation")
+                        @if (!string.IsNullOrWhiteSpace(siteSettings?.SiteSubtitle))
+                        {
+                            <p class="header-subtitle">@siteSettings.SiteSubtitle</p>
+                        }
+                    </div>
+                }
+            </div><!-- col -->
+            <div class="col-lg-8">
+                @await Html.PartialAsync("navigation")
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
+</header>

@@ -1,0 +1,27 @@
+@use '../utils/variables' as var;
+@use '../utils/mixins' as mix;
+
+.header {
+    padding: 2.4rem 0;
+
+    @media (min-width: var.$lg) {
+        margin-bottom: 2.4rem;
+    }
+
+    &-title {
+        display: inline-block;
+        font-size: 2rem;
+        line-height: 1.25;
+        margin-bottom: .4rem;
+        @include mix.menuItemStyles;
+
+        &:hover,
+        &:focus {
+            text-decoration-thickness: 1px;
+        }
+    }
+
+    &-subtitle {
+        color: var.$accent;
+    }
+}

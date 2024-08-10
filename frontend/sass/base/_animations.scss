@@ -5,7 +5,8 @@ $animation-depth-mobile: 25px;
 
 .__animateleft,
 .__animateright,
-.__animateup {
+.__animateup,
+.__animatedown {
     opacity: 0;
     
     &.__animate {
@@ -36,5 +37,13 @@ $animation-depth-mobile: 25px;
 
     @media screen and (min-width: var.$lg) {
         transform: translateY($animation-depth);
+    }
+}
+
+.__animatedown {
+    transform: translateY(-$animation-depth-mobile);
+
+    @media screen and (min-width: var.$lg) {
+        transform: translateY(-$animation-depth);
     }
 }

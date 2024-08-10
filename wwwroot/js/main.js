@@ -16,6 +16,7 @@ function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length)
 var animateLeft = document.querySelectorAll('.__animateleft');
 var animateRight = document.querySelectorAll('.__animateright');
 var animateUp = document.querySelectorAll('.__animateup');
+var animateDown = document.querySelectorAll('.__animatedown');
 var animations = [].concat(_toConsumableArray(animateLeft), _toConsumableArray(animateRight));
 var messagesContainer = document.querySelector('.messages');
 var closeMessagesBtn = document.querySelectorAll('.messages-close');
@@ -40,10 +41,13 @@ var setObserver = function setObserver(el, offset) {
 };
 
 // observer for animate left/right
-setObserver(animations, -75);
+setObserver(animations, 0);
 
 // observer for animate up
 setObserver(animateUp, 0);
+
+// observer for animate down
+setObserver(animateDown, 100);
 
 /***/ }),
 
