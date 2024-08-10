@@ -3,9 +3,7 @@
 @use '../components/richtext';
 
 .banner {
-    @media (min-width: var.$lg) {
-        margin-bottom: 7.2rem;
-    }
+    @include mix.sectionSpacing;
     
     &-content {
         @extend .richtext;

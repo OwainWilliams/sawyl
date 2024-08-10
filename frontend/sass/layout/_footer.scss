@@ -1,0 +1,26 @@
+@use '../utils/variables' as var;
+
+.footer {
+    &-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 2.4rem 0;
+    }
+
+    &-socials {
+        display: flex;
+        justify-content: center;
+        gap: 1.6rem;
+
+        &+.footer-copyright {
+            margin-top: 1.6rem;
+        }
+    }
+
+    &-copyright {
+        font-size: 2rem;
+        font-weight: var.$font-medium;
+    }
+}

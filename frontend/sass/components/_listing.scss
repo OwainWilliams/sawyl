@@ -1,9 +1,31 @@
 @use '../utils/variables' as var;
 @use '../utils/mixins' as mix;
+@use '../base/typography';
+@use '../components/richtext';
 
 .listing {
-    &+.listing {
-        margin-top: 2.4rem;
+    position: relative;
+    transition: scale var.$transition-fast;
+
+    &:hover,
+    &:focus-within {
+        .listing {
+            &-icon svg,
+            &-image img {
+                scale: 1.1;
+            }
+
+            &-title a {
+                color: var.$accent;
+            }
+        }
+    }
+
+    &-image,
+    &-icon {
+        @include mix.aspectRatio(9, 8);
+        overflow: hidden;
+        border-radius: 1.6rem;
     }
 
     &-icon {
@@ -11,22 +33,69 @@
         justify-content: center;
         align-items: center;
         background: var.$accent;
-        border-radius: 1.6rem;
         height: 100%;
         width: 100%;
         @include mix.setSVGStyles;
-        @include mix.aspectRatio(9, 8);
     }
 
-    &-image {
-        @include mix.aspectRatio(9, 8);
+    &-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        height: 100%;
+    }
+
+    &-title {
+        @extend .h4;
+        @include mix.linkTitle;
+
+        >a {
+            color: var.$black;
+            text-decoration: none;
+        }
+    }
+
+    &-description {
+        @extend .richtext;
+        margin-bottom: 1.2rem;
+        display: -webkit-box;
+        line-clamp: 3;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    &-date {
+        color: var.$accent;
+    }
+
+    &-author {
+        font-size: 1.4rem;
+        font-weight: var.$font-medium;
+
+        >span {
+            color: var.$accent;
+        }
     }
 
     &--blog {
         @extend .listing;
+        display: grid;
+
+        @media (min-width: var.$lg) {
+            grid-template-columns: 24rem auto;
+            gap: 2.4rem;
+        }
+
+        &+.listing {
+            margin-top: 2.4rem;
+        }
 
         .listing {
-            
+            &-date {
+                margin-bottom: .4rem;
+            }
         }
     }
 }

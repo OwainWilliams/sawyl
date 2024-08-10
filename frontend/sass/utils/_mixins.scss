@@ -38,7 +38,7 @@
 }
 
 // svgs
-@mixin setSVGStyles($width: 7.2rem, $height: 7.2rem, $color: var.$white) {
+@mixin setSVGStyles($width: 8.4rem, $height: 8.4rem, $color: var.$white) {
     svg {
         width: $width;
         height: $height;
@@ -58,5 +58,28 @@
         color: var.$accent;
         text-decoration: underline;
         text-decoration-color: var.$accent;
+    }
+}
+
+@mixin linkTitle($borderRadius: 1.6rem) {
+    >a {
+        &::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border-radius: $borderRadius;
+        }
+    }
+}
+
+// spacing
+@mixin sectionSpacing($mobileSpacing: 3.2rem, $desktopSpacing: 7.2rem) {
+    margin-bottom: $mobileSpacing;
+
+    @media (min-width: var.$lg) {
+        margin-bottom: $desktopSpacing;
     }
 }

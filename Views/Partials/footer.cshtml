@@ -1,3 +1,39 @@
 ﻿@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
 
-<p>Footer</p>
+@{
+    var siteSettings = Model.GetSiteSettings();
+}
+
+<footer class="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="footer-content __animateup">
+                    <div class="footer-socials">
+                        @if (!string.IsNullOrWhiteSpace(siteSettings.EmailLink))
+                        {
+                            <a href="@siteSettings.EmailLink">
+                                <span class="visually-hidden">Email me</span>
+                            </a>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(siteSettings.TwitterLink))
+                        {
+                            <a href="@siteSettings.TwitterLink">
+                                <span class="visually-hidden">View my X profile</span>
+                            </a>
+                        }
+
+                        @if (!string.IsNullOrWhiteSpace(siteSettings.MastadonLink))
+                        {
+                            <a href="@siteSettings.MastadonLink">
+                                <span class="visually-hidden">View my Mastadon profile</span>
+                            </a>
+                        }
+                    </div>
+                    <p class="footer-copyright">Copyright &copy; <a href="/">Sam Forrest</a> @DateTime.Now.Year</p>
+                </div>
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
+</footer>

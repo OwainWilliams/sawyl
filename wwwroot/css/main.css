@@ -59,6 +59,7 @@ h2,
 .h3,
 h3,
 .h4,
+.listing-title,
 h4,
 .h5,
 h5,
@@ -96,11 +97,11 @@ h6 {
   }
 }
 
-.h4, h4 {
+.h4, .listing-title, h4 {
   font-size: 2rem;
 }
 @media (min-width: 992px) {
-  .h4, h4 {
+  .h4, .listing-title, h4 {
     font-size: 2.4rem;
   }
 }
@@ -113,6 +114,7 @@ body {
   font-size: 1.6rem;
   font-family: "Rethink Sans", sans-serif;
   color: #131313;
+  background: #FCFCFC;
 }
 
 a {
@@ -187,6 +189,11 @@ img {
   width: 100%;
   height: 100%;
   border-radius: 1.6rem;
+}
+
+img,
+svg {
+  transition: 0.3s;
 }
 
 @keyframes imageDecorationSlide {
@@ -4291,35 +4298,96 @@ img {
   }
 }
 
-.richtext p, .banner-content p {
+.richtext p, .banner-content p, .listing-description p {
   line-height: 1.4;
   font-size: 1.8rem;
 }
-.richtext p + p, .banner-content p + p {
+.richtext p + p, .banner-content p + p, .listing-description p + p {
   margin-top: 1.6rem;
 }
 
-.listing + .listing, .listing--blog + .listing, .listing + .listing--blog, .listing--blog + .listing--blog {
-  margin-top: 2.4rem;
+.listing, .listing--blog {
+  position: relative;
+  transition: scale 0.3s;
+}
+.listing:hover .listing-icon svg, .listing--blog:hover .listing-icon svg, .listing:hover .listing-image img, .listing--blog:hover .listing-image img, .listing:focus-within .listing-icon svg, .listing--blog:focus-within .listing-icon svg, .listing:focus-within .listing-image img, .listing--blog:focus-within .listing-image img {
+  scale: 1.1;
+}
+.listing:hover .listing-title a, .listing--blog:hover .listing-title a, .listing:focus-within .listing-title a, .listing--blog:focus-within .listing-title a {
+  color: #007F5F;
+}
+.listing-image, .listing-icon {
+  aspect-ratio: 1.125;
+  overflow: hidden;
+  border-radius: 1.6rem;
 }
 .listing-icon {
   display: flex;
   justify-content: center;
   align-items: center;
   background: #007F5F;
-  border-radius: 1.6rem;
   height: 100%;
   width: 100%;
-  aspect-ratio: 1.125;
 }
 .listing-icon svg {
-  width: 7.2rem;
-  height: 7.2rem;
+  width: 8.4rem;
+  height: 8.4rem;
   fill: #FCFCFC;
 }
-.listing-image {
-  aspect-ratio: 1.125;
+.listing-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
 }
+.listing-title > a::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1.6rem;
+}
+.listing-title > a {
+  color: #131313;
+  text-decoration: none;
+}
+.listing-description {
+  margin-bottom: 1.2rem;
+  display: -webkit-box;
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.listing-date {
+  color: #007F5F;
+}
+.listing-author {
+  font-size: 1.4rem;
+  font-weight: 500;
+}
+.listing-author > span {
+  color: #007F5F;
+}
+.listing--blog {
+  display: grid;
+}
+@media (min-width: 992px) {
+  .listing--blog {
+    grid-template-columns: 24rem auto;
+    gap: 2.4rem;
+  }
+}
+.listing--blog + .listing, .listing--blog + .listing--blog {
+  margin-top: 2.4rem;
+}
+.listing--blog .listing-date {
+  margin-bottom: 0.4rem;
+}
+
 .header {
   padding: 2.4rem 0;
 }
@@ -4382,6 +4450,9 @@ img {
   text-decoration-color: #007F5F;
 }
 
+.banner, .banner--home {
+  margin-bottom: 3.2rem;
+}
 @media (min-width: 992px) {
   .banner, .banner--home {
     margin-bottom: 7.2rem;
@@ -4411,4 +4482,41 @@ img {
   animation-fill-mode: forwards;
   animation-delay: 1s;
   z-index: -1;
+}
+
+.featured, .featured--blogs {
+  margin-bottom: 3.2rem;
+}
+@media (min-width: 992px) {
+  .featured, .featured--blogs {
+    margin-bottom: 7.2rem;
+  }
+}
+@media (min-width: 992px) {
+  .featured-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2.4rem;
+    margin-bottom: 2.4rem;
+  }
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2.4rem 0;
+}
+.footer-socials {
+  display: flex;
+  justify-content: center;
+  gap: 1.6rem;
+}
+.footer-socials + .footer-copyright {
+  margin-top: 1.6rem;
+}
+.footer-copyright {
+  font-size: 2rem;
+  font-weight: 500;
 }
