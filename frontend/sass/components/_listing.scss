@@ -3,6 +3,14 @@
 @use '../base/typography';
 @use '../components/richtext';
 
+.list {
+    @include mix.sectionSpacing;
+
+    &--blog {
+        @extend .list;
+    }
+}
+
 .listing {
     position: relative;
     transition: scale var.$transition-fast;
@@ -23,9 +31,13 @@
 
     &-image,
     &-icon {
-        @include mix.aspectRatio(9, 8);
         overflow: hidden;
-        border-radius: 1.6rem;
+        border-radius: var.$border-radius;
+        @include mix.aspectRatio(9, 8);
+    }
+
+    &-image {
+        @include mix.imageWrap;
     }
 
     &-icon {

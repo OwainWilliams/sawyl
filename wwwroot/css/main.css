@@ -59,6 +59,7 @@ h2,
 .h3,
 h3,
 .h4,
+.sidebar-title,
 .listing-title,
 h4,
 .h5,
@@ -97,11 +98,11 @@ h6 {
   }
 }
 
-.h4, .listing-title, h4 {
+.h4, .sidebar-title, .listing-title, h4 {
   font-size: 2rem;
 }
 @media (min-width: 992px) {
-  .h4, .listing-title, h4 {
+  .h4, .sidebar-title, .listing-title, h4 {
     font-size: 2.4rem;
   }
 }
@@ -188,7 +189,7 @@ picture {
 img {
   width: 100%;
   height: 100%;
-  border-radius: 1.6rem;
+  border-radius: 0.8rem;
 }
 
 img,
@@ -204,6 +205,18 @@ svg {
     transform: translate(0.8rem, 0.8rem);
   }
 }
+.visually-hidden {
+  display: block;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /*!
  * Bootstrap Grid v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors
@@ -4306,6 +4319,14 @@ svg {
   margin-top: 1.6rem;
 }
 
+.list, .list--blog {
+  margin-bottom: 3.2rem;
+}
+@media (min-width: 992px) {
+  .list, .list--blog {
+    margin-bottom: 7.2rem;
+  }
+}
 .listing, .listing--blog {
   position: relative;
   transition: scale 0.3s;
@@ -4317,9 +4338,23 @@ svg {
   color: #007F5F;
 }
 .listing-image, .listing-icon {
-  aspect-ratio: 1.125;
   overflow: hidden;
-  border-radius: 1.6rem;
+  border-radius: 0.8rem;
+  aspect-ratio: 1.125;
+}
+.listing-image {
+  position: relative;
+}
+.listing-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 .listing-icon {
   display: flex;
@@ -4386,6 +4421,22 @@ svg {
 }
 .listing--blog .listing-date {
   margin-bottom: 0.4rem;
+}
+
+.sidebar-list + .sidebar-title {
+  margin-top: 1rem;
+}
+.sidebar-item + .sidebar-item {
+  margin-top: 1rem;
+}
+.sidebar-item > :first-child,
+.sidebar-item > :last-child {
+  font-weight: 500;
+}
+.sidebar-item > :last-child {
+  display: block;
+  color: #007F5F;
+  margin-top: 0.3rem;
 }
 
 .header {
@@ -4466,6 +4517,7 @@ svg {
 .banner--home .banner-image {
   aspect-ratio: 1.3333333333;
   position: relative;
+  position: relative;
 }
 .banner--home .banner-image::before {
   content: "";
@@ -4474,7 +4526,7 @@ svg {
   left: 0;
   right: 0;
   bottom: 0;
-  border-radius: 1.6rem;
+  border-radius: 0.8rem;
   background: #007F5F;
   animation-name: imageDecorationSlide;
   animation-timing-function: cubic-bezier(0.175, 1.5, 0.32, 1.275);
@@ -4482,6 +4534,17 @@ svg {
   animation-fill-mode: forwards;
   animation-delay: 1s;
   z-index: -1;
+}
+.banner--home .banner-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .featured, .featured--blogs {
@@ -4516,7 +4579,76 @@ svg {
 .footer-socials + .footer-copyright {
   margin-top: 1.6rem;
 }
+.footer-socials-icon {
+  background: #007F5F;
+  border-radius: 0.8rem;
+  padding: 1.2rem;
+  transition: all 0.3s;
+}
+.footer-socials-icon svg {
+  width: 2.4rem;
+  height: 2.4rem;
+  fill: #FCFCFC;
+}
+.footer-socials-icon:hover, .footer-socials-icon:focus {
+  transform: translateY(-0.8rem);
+  background: #004c39;
+}
 .footer-copyright {
   font-size: 2rem;
   font-weight: 500;
+}
+
+.employment {
+  margin-bottom: 3.2rem;
+}
+@media (min-width: 992px) {
+  .employment {
+    margin-bottom: 7.2rem;
+  }
+}
+
+.blog {
+  margin-bottom: 3.2rem;
+}
+@media (min-width: 992px) {
+  .blog {
+    margin-bottom: 7.2rem;
+  }
+}
+.blog-wrap {
+  display: grid;
+  grid-template-columns: 100%;
+}
+@media (min-width: 992px) {
+  .blog-wrap {
+    grid-template-columns: 9fr 3fr;
+    gap: 4.8rem 12rem;
+  }
+}
+.blog-image {
+  position: relative;
+  aspect-ratio: 2.5;
+}
+.blog-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+}
+@media (min-width: 992px) {
+  .blog-image {
+    grid-column: span 2;
+  }
+}
+.blog-subtitle {
+  font-size: 2rem;
+  font-weight: 500;
+  color: #007F5F;
+  margin-bottom: 1.2rem;
 }

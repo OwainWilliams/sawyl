@@ -1,0 +1,52 @@
+﻿@inherits UmbracoViewPage<AboutPage>
+@{
+    Layout = "Master.cshtml";
+}
+
+@await Html.PartialAsync("components/banner", Model)
+
+@if (Model.EmploymentHistory != null && Model.EmploymentHistory.Any())
+{
+    <section class="employment">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2 class="employment-title __animateleft">@(!string.IsNullOrWhiteSpace(Model.EmploymentTitle) ? Model.EmploymentTitle : "Employment History")</h2>
+
+                    <div class="employment-wrap">
+                        @foreach (Role role in Model.EmploymentHistory)
+                        {
+                            <div class="role __animateup">
+                                <header class="role-header">
+                                    <h3 class="role-title">@(!string.IsNullOrWhiteSpace(role.CompanyName) ? role.CompanyName : role.Name)</h3>
+                                    @if (!string.IsNullOrWhiteSpace(role.RoleTitle))
+                                    {
+                                        string? endOfRole = null;
+
+                                        @if (role.IsCurrentRole)
+                                        {
+                                            endOfRole = " - Present";
+                                        }
+                                        else if (role.RoleEndDate != default(DateTime))
+                                        {
+                                            endOfRole = " - " + role.RoleEndDate.ToString("MMM yyyy");
+                                        }
+
+                                        <p class="role-name">@role.RoleTitle (@role.RoleStartDate.ToString("MMM yyyy")@endOfRole)</p>
+                                    }
+                                </header>
+
+                                @if (role.RoleDescription != null)
+                                {
+                                    <div class="role-content">
+                                        @role.RoleDescription
+                                    </div>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

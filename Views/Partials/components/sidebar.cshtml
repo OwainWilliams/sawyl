@@ -1,0 +1,58 @@
+﻿@inherits UmbracoViewPage<ISidebarProperties>
+
+@{
+    DateTime? createdDate = null;
+    string? createdType = String.Empty;
+    string? creator = String.Empty;
+    string? pageType = String.Empty;
+    IEnumerable<IPublishedContent>? relatedContent = null;
+
+    if (Model is IPublishedContent publishedContent)
+    {
+        createdDate = publishedContent.CreateDate;
+    }
+
+    if (Model is BlogPage blogPage)
+    {
+        createdType = "Written";
+        creator = blogPage.BlogAuthor;
+        relatedContent = blogPage.RelatedBlogs;
+        pageType = "Blog";
+    }
+}
+
+<aside class="sidebar __animateright">
+    <h2 class="sidebar-title">@(!string.IsNullOrWhiteSpace(Model.SidebarTitle) ? Model.SidebarTitle : "Additional Information")</h2>
+
+    <ul class="sidebar-list">
+        <li class="sidebar-item">
+            <p>@createdType by</p>
+            <p>@(!string.IsNullOrWhiteSpace(creator) ? creator : "Sam Forrest")</p>
+        </li>
+
+        @if (createdDate != null)
+        {
+            <li class="sidebar-item">
+                <p>Created on</p>
+                <time datetime="@createdDate">@createdDate?.ToString("dd MMMM yyyy")</time>
+            </li>
+        }
+    </ul>
+
+    @if (relatedContent != null && relatedContent.Any())
+    {
+        @if (!string.IsNullOrWhiteSpace(pageType))
+        {
+            <h2 class="sidebar-title">Related @(pageType)s</h2>
+        }
+
+        <ul class="sidebar-list">
+        @foreach (var item in relatedContent)
+        {
+            <li>
+                <a href="@item.Url()">@item.Name</a>
+            </li>
+        }
+        </ul>
+    }
+</aside>

@@ -1,0 +1,6 @@
+@use '../utils/variables' as var;
+@use '../utils/mixins' as mix;
+
+.employment {
+    @include mix.sectionSpacing;
+}

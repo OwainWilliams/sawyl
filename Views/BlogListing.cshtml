@@ -1,6 +1,25 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogListing>
-@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+﻿@inherits UmbracoViewPage<BlogListing>
 @{
-	Layout = null;
+    Layout = "Master.cshtml";
+
+    var blogs = Model.Children.OfType<BlogPage>().Where(x => x.IsPublished());
 }
+
+@await Html.PartialAsync("components/banner", Model)
+
+<section class="list--blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="visually-hidden">All blogs</h2>
+
+                <ul class="list-wrap">
+                    @foreach (BlogPage blog in blogs)
+                    {
+                        @(await Html.PartialAsync("listing/blogListingCard", blog))
+                    }
+                </ul>
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
+</section>

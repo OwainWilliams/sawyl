@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Site Settings</summary>
-	[PublishedModel("siteSettings")]
-	public partial class SiteSettings : PublishedContentModel, ISiteSettingsProperties
+	/// <summary>Role</summary>
+	[PublishedModel("role")]
+	public partial class Role : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
-		public new const string ModelTypeAlias = "siteSettings";
+		public new const string ModelTypeAlias = "role";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
@@ -34,14 +34,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<SiteSettings, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<Role, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public SiteSettings(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public Role(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,51 +50,56 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Email Link: Enter only your email address.
+		/// Company Link
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("emailLink")]
-		public virtual string EmailLink => this.Value<string>(_publishedValueFallback, "emailLink");
+		[ImplementPropertyType("companyLink")]
+		public virtual string CompanyLink => this.Value<string>(_publishedValueFallback, "companyLink");
 
 		///<summary>
-		/// Main Navigation: Select links for your main navigation.
+		/// Company Name
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("mainNavigation")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.Link> MainNavigation => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.Link>>(_publishedValueFallback, "mainNavigation");
+		[ImplementPropertyType("companyName")]
+		public virtual string CompanyName => this.Value<string>(_publishedValueFallback, "companyName");
 
 		///<summary>
-		/// Mastadon Link
+		/// Is Current Role
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("mastadonLink")]
-		public virtual string MastadonLink => this.Value<string>(_publishedValueFallback, "mastadonLink");
+		[ImplementPropertyType("isCurrentRole")]
+		public virtual bool IsCurrentRole => this.Value<bool>(_publishedValueFallback, "isCurrentRole");
 
 		///<summary>
-		/// Twitter Link
+		/// Role Description
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("twitterLink")]
-		public virtual string TwitterLink => this.Value<string>(_publishedValueFallback, "twitterLink");
+		[ImplementPropertyType("roleDescription")]
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString RoleDescription => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "roleDescription");
 
 		///<summary>
-		/// Site Name: Enter the name of the site.
+		/// Role End Date
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("siteName")]
-		public virtual string SiteName => global::Umbraco.Cms.Web.Common.PublishedModels.SiteSettingsProperties.GetSiteName(this, _publishedValueFallback);
+		[ImplementPropertyType("roleEndDate")]
+		public virtual global::System.DateTime RoleEndDate => this.Value<global::System.DateTime>(_publishedValueFallback, "roleEndDate");
 
 		///<summary>
-		/// Site Subtitle
+		/// Role Start Date
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
+		[ImplementPropertyType("roleStartDate")]
+		public virtual global::System.DateTime RoleStartDate => this.Value<global::System.DateTime>(_publishedValueFallback, "roleStartDate");
+
+		///<summary>
+		/// Role Title
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("siteSubtitle")]
-		public virtual string SiteSubtitle => global::Umbraco.Cms.Web.Common.PublishedModels.SiteSettingsProperties.GetSiteSubtitle(this, _publishedValueFallback);
+		[ImplementPropertyType("roleTitle")]
+		public virtual string RoleTitle => this.Value<string>(_publishedValueFallback, "roleTitle");
 	}
 }

@@ -20,6 +20,7 @@
             &-image {
                 @include mix.aspectRatio(4, 3);
                 @include mix.imageDecoration;
+                @include mix.imageWrap;
             }
         }
     }

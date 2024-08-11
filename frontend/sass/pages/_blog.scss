@@ -1,0 +1,32 @@
+@use '../utils/variables' as var;
+@use '../utils/mixins' as mix;
+
+.blog {
+    @include mix.sectionSpacing;
+
+    &-wrap {
+        display: grid;
+        grid-template-columns: 100%;
+
+        @media (min-width: var.$lg) {
+            grid-template-columns: 9fr 3fr;
+            gap: 4.8rem 12rem;
+        }
+    }
+
+    &-image {
+        @include mix.imageWrap;
+        @include mix.aspectRatio(5, 2);
+
+        @media (min-width: var.$lg) {
+            grid-column: span 2;
+        }
+    }
+
+    &-subtitle {
+        font-size: 2rem;
+        font-weight: var.$font-medium;
+        color: var.$accent;
+        margin-bottom: 1.2rem;
+    }
+}

@@ -1,6 +1,40 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.BlogPage>
-@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+﻿@inherits UmbracoViewPage<BlogPage>
 @{
-	Layout = null;
+    Layout = "Master.cshtml";
 }
+
+<section class="blog">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="blog-wrap">
+                    @if (Model.BlogImage != null)
+                    {
+                        <div class="blog-image __animatedown">
+                            <picture>
+                                <img src="@Model.BlogImage.Url()" />
+                            </picture>
+                        </div>
+                    }
+
+                    <main class="blog-content __animateleft">
+                        <h1 class="blog-title">@(!string.IsNullOrWhiteSpace(Model.BlogTitle) ? Model.BlogTitle : Model.Name)</h1>
+                        @if (!string.IsNullOrWhiteSpace(Model.BlogSubtitle))
+                        {
+                            <p class="blog-subtitle">@Model.BlogSubtitle</p>
+                        }
+
+                        @if (Model.Content != null)
+                        {
+                            <div class="richtext">
+                                @Model.Content
+                            </div>
+                        }
+                    </main>
+
+                    @(await Html.PartialAsync("components/sidebar", Model))
+                </div>
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
+</section>

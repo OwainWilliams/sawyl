@@ -1,0 +1,31 @@
+@use '../utils/variables' as var;
+@use '../base/typography';
+
+.sidebar {
+    &-title {
+        @extend .h4;
+    }
+
+    &-list {
+        &+.sidebar-title {
+            margin-top: 1rem;
+        }
+    }
+
+    &-item {
+        &+.sidebar-item {
+            margin-top: 1rem;
+        }
+
+        >:first-child,
+        >:last-child {
+            font-weight: var.$font-medium;
+        }
+
+        >:last-child {
+            display: block;
+            color: var.$accent;
+            margin-top: .3rem;
+        }
+    }
+}
