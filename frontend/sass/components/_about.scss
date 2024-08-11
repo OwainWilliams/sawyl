@@ -1,0 +1,15 @@
+@use '../utils/variables' as var;
+
+.about-item {
+    display: grid;
+    grid-template-columns: 100%;
+
+    @media (min-width: var.$lg) {
+        gap: 0 9rem;
+        grid-template-columns: 4fr 8fr;
+    }
+
+    &+.about-item {
+        margin-top: 2.4rem;
+    }
+}

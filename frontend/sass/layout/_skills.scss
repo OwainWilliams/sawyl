@@ -1,0 +1,20 @@
+@use '../utils/mixins' as mix;
+@use '../components/about';
+
+.skills {
+    @include mix.sectionSpacing;
+}
+
+.skill {
+    @extend .about-item;
+
+    &-icons {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    &-image {
+        width: 8rem;
+        @include mix.imageWrap($objectFit: contain);
+    }
+}

@@ -2,6 +2,8 @@
 @use '../utils/mixins' as mix;
 
 .footer {
+    overflow: hidden;
+    
     &-content {
         display: flex;
         flex-direction: column;

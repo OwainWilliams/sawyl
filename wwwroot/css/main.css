@@ -4311,11 +4311,11 @@ svg {
   }
 }
 
-.richtext p, .banner-content p, .listing-description p {
+.richtext p, .banner-content p, .role-content p, .listing-description p {
   line-height: 1.4;
   font-size: 1.8rem;
 }
-.richtext p + p, .banner-content p + p, .listing-description p + p {
+.richtext p + p, .banner-content p + p, .role-content p + p, .listing-description p + p {
   margin-top: 1.6rem;
 }
 
@@ -4439,6 +4439,40 @@ svg {
   margin-top: 0.3rem;
 }
 
+.about-item, .skill, .role {
+  display: grid;
+  grid-template-columns: 100%;
+}
+@media (min-width: 992px) {
+  .about-item, .skill, .role {
+    gap: 0 9rem;
+    grid-template-columns: 4fr 8fr;
+  }
+}
+.about-item + .about-item, .skill + .about-item, .role + .about-item, .about-item + .skill, .skill + .skill, .role + .skill, .about-item + .role, .skill + .role, .role + .role {
+  margin-top: 2.4rem;
+}
+
+.role-title {
+  line-height: 1;
+  margin: 0;
+}
+.role-titlewrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.6rem;
+  margin-bottom: 0.8rem;
+}
+.role-titlewrap > a svg {
+  width: 1.4rem;
+  height: 1.4rem;
+  fill: #007F5F;
+}
+.role-name {
+  font-size: 1.8rem;
+  font-weight: 500;
+  color: #007F5F;
+}
 .header {
   padding: 2.4rem 0;
 }
@@ -4564,6 +4598,9 @@ svg {
     margin-bottom: 2.4rem;
   }
 }
+.footer {
+  overflow: hidden;
+}
 .footer-content {
   display: flex;
   flex-direction: column;
@@ -4606,6 +4643,38 @@ svg {
   .employment {
     margin-bottom: 7.2rem;
   }
+}
+.employment-title {
+  margin-bottom: 2.4rem;
+}
+
+.skills {
+  margin-bottom: 3.2rem;
+}
+@media (min-width: 992px) {
+  .skills {
+    margin-bottom: 7.2rem;
+  }
+}
+
+.skill-icons {
+  display: flex;
+  flex-wrap: wrap;
+}
+.skill-image {
+  width: 8rem;
+  position: relative;
+}
+.skill-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: center;
+     object-position: center;
 }
 
 .blog {

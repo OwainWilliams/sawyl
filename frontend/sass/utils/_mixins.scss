@@ -6,7 +6,7 @@
     aspect-ratio: math.div($width, $height);
 }
 
-@mixin imageWrap() {
+@mixin imageWrap($objectFit: cover) {
     position: relative;
 
     img {
@@ -15,7 +15,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        object-fit: cover;
+        object-fit: $objectFit;
         object-position: center;
     }
 }

@@ -3,4 +3,8 @@
 
 .employment {
     @include mix.sectionSpacing;
+
+    &-title {
+        margin-bottom: 2.4rem;
+    }
 }
