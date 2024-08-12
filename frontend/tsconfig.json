@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "../wwwroot/js",
+    "rootDir": "./ts",
+    "target": "es6",
+    "module": "commonjs",
+    "strict": true
+  },
+  "include": [
+    "ts/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
+}
