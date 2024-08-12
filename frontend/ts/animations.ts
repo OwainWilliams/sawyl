@@ -1,6 +1,5 @@
-const animateUp: NodeListOf<HTMLElement> = document.querySelectorAll('.__animateup');
-const animateDown: NodeListOf<HTMLElement> = document.querySelectorAll('.__animatedown');
-const animationsXAxis: NodeListOf<HTMLElement> = document.querySelectorAll('.__animateleft, .__animateright');
+const animations: NodeListOf<HTMLElement> = document.querySelectorAll('.__animateleft, .__animateright, .__animateup');
+const animateDown: NodeListOf<HTMLElement> = document.querySelectorAll('.__animatedown'); // animateDown is handled separately as it requires a higher threshold
 
 const setObserver = (elements: NodeListOf<Element> | HTMLElement[], offset: number) => {
     const options: IntersectionObserverInit = {
@@ -27,6 +26,5 @@ const setObserver = (elements: NodeListOf<Element> | HTMLElement[], offset: numb
 };
 
 // Set observers directly
-setObserver(animationsXAxis, 0);
-setObserver(animateUp, 0);
+setObserver(animations, 0);
 setObserver(animateDown, 100);
