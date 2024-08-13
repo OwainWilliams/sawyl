@@ -18,8 +18,8 @@
                         <div class="skills-wrap">
                             @foreach (SkillGroup skillGroup in Model.Skills)
                             {
-                                <div class="skill __animateleft">
-                                    <h3 class="skill-title">@skillGroup.Name</h3>
+                                <div class="skill">
+                                    <h3 class="skill-title __animateleft">@skillGroup.Name</h3>
 
                                     @{
                                         IEnumerable<Skill> childSkills = skillGroup.Children?.OfType<Skill>()
@@ -27,7 +27,7 @@
 
                                         if (childSkills != null && childSkills.Any())
                                         {
-                                            <div class="skill-icons">
+                                            <div class="skill-icons __animateright">
                                                 @foreach (Skill childSkill in childSkills)
                                                 {
                                                     @if (childSkill.SkillIcon != null)
@@ -65,16 +65,21 @@
                         {
                             <div class="role __animateup">
                                 <header class="role-header">
-                                    <div class="role-titlewrap">
-                                        <h3 class="role-title">@(!string.IsNullOrWhiteSpace(role.CompanyName) ? role.CompanyName : role.Name)</h3>
+                                    <h3 class="role-title">
                                         @if (!string.IsNullOrWhiteSpace(role.CompanyLink))
                                         {
-                                            <a href="@role.CompanyLink" target="_blank">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" /><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" /></svg>
-                                                <span class="visually-hidden">Visit @(role.CompanyName)'s site</span>
-                                            </a>
+                                            @:<a href="@role.CompanyLink" target="_blank">
                                         }
-                                    </div>
+
+                                        @(!string.IsNullOrWhiteSpace(role.CompanyName) ? role.CompanyName : role.Name)
+
+                                        @if (!string.IsNullOrWhiteSpace(role.CompanyLink))
+                                        {
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M8.636 3.5a.5.5 0 0 0-.5-.5H1.5A1.5 1.5 0 0 0 0 4.5v10A1.5 1.5 0 0 0 1.5 16h10a1.5 1.5 0 0 0 1.5-1.5V7.864a.5.5 0 0 0-1 0V14.5a.5.5 0 0 1-.5.5h-10a.5.5 0 0 1-.5-.5v-10a.5.5 0 0 1 .5-.5h6.636a.5.5 0 0 0 .5-.5" /><path fill-rule="evenodd" d="M16 .5a.5.5 0 0 0-.5-.5h-5a.5.5 0 0 0 0 1h3.793L6.146 9.146a.5.5 0 1 0 .708.708L15 1.707V5.5a.5.5 0 0 0 1 0z" /></svg>
+                                            @:</a>
+                                        }
+                                    </h3>
+
                                     @if (!string.IsNullOrWhiteSpace(role.RoleTitle))
                                     {
                                         string? endOfRole = null;

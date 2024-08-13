@@ -5,7 +5,11 @@
         @if (Model.BlogImage != null)
         {
             <div class="listing-image">
-                <img src="@Model.BlogImage.Url()" />
+                <picture>
+                    <source media="(min-width: 992px)" srcset="@Model.BlogImage.GetCropUrl("BlogListingDesktop")" />
+                    <source srcset="@Model.BlogImage.GetCropUrl("BlogListingMobile")" />
+                    <img src="@Model.BlogImage.GetCropUrl("BlogListingMobile")" />
+                </picture>
             </div>
         }
         else

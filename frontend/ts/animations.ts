@@ -1,7 +1,7 @@
 const animations: NodeListOf<HTMLElement> = document.querySelectorAll('.__animateleft, .__animateright, .__animateup');
 const animateDown: NodeListOf<HTMLElement> = document.querySelectorAll('.__animatedown'); // animateDown is handled separately as it requires a higher threshold
 
-const setObserver = (elements: NodeListOf<Element> | HTMLElement[], offset: number) => {
+const setObserver = (elements: NodeListOf<Element> | HTMLElement[], offset: number): void => {
     const options: IntersectionObserverInit = {
         root: null,
         rootMargin: `${offset}px`,

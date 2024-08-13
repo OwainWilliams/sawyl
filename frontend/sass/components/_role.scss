@@ -8,22 +8,33 @@
 
     &-title {
         line-height: 1;
-        margin: 0;
-    }
-
-    &-titlewrap {
-        display: flex;
-        justify-content: space-between;
-        gap: 1.6rem;
         margin-bottom: .8rem;
+        
+        &:has(>a) {
+            
+            >a {
+                color: var.$black;
+                display: inline-flex;
+                gap: .5rem;
+                text-decoration-thickness: 2px;
+                text-underline-offset: 2px;
+                text-decoration-color: var.$accent;
+                transition: 0s;
+                @include mix.setSVGStyles($width: 1.2rem, $height: 1.2rem, $color: var.$accent);
 
-        >a {
-            @include mix.setSVGStyles($width: 1.4rem, $height: 1.4rem, $color: var.$accent)
+                &:hover,
+                &:focus {
+                    color: var.$accent;
+                }
+
+                >svg {
+                    transform: translateY(.2rem);
+                }
+            }
         }
     }
 
     &-name {
-        font-size: 1.8rem;
         font-weight: var.$font-medium;
         color: var.$accent;
     }
