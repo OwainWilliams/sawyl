@@ -1,0 +1,44 @@
+@use '../utils/variables' as var;
+@use '../utils/mixins' as mix;
+
+.button {
+    cursor: pointer;
+    background: none;
+    border: none;
+
+    &--icon {
+        padding: 0;
+        @extend .button;
+        @include mix.setSVGStyles($width: 2.4rem, $height: 2.4rem, $color: var.$black);
+
+        &:hover,
+        &:focus {
+            svg {
+                fill: var.$accent;
+            }
+        }
+
+        &.__active {
+            @include mix.setSVGStyles($width: 2.4rem, $height: 2.4rem, $color: var.$white);
+
+            &:hover,
+            &:focus {
+                svg {
+                    fill: var.$accent;
+                }
+            }
+
+            .light-icon {
+                display: block;
+            }
+
+            .dark-icon {
+                display: none;
+            }
+        }
+
+        .light-icon {
+            display: none;
+        }
+    }
+}

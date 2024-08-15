@@ -37,7 +37,10 @@
     }
 
     &-copyright {
-        // font-size: 2rem;
         font-weight: var.$font-medium;
+
+        >a {
+            color: var.$black;
+        }
     }
 }

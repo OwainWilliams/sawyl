@@ -1,0 +1,23 @@
+@use '../utils/variables' as var;
+
+body {
+    &.dark-mode {
+        background: var.$dark-bg;
+        color: var.$white;
+
+        .header,
+        .role-title,
+        .listing-title,
+        .footer {
+            a {
+                color: var.$white;
+                text-decoration-color: var.$accent;
+
+                &:hover,
+                &:focus {
+                    color: var.$accent;
+                }
+            }
+        }
+    }
+}
