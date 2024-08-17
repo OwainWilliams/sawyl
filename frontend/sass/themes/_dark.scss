@@ -19,5 +19,11 @@ body {
                 }
             }
         }
+
+        .listing {
+            &-content {
+                color: rgba(var.$white, 0.8);
+            }
+        }
     }
 }

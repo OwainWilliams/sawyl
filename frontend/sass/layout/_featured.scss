@@ -15,7 +15,21 @@
         }
     }
 
-    &--blogs {
+    &--blogs,
+    &--projects {
         @extend .featured;
+    }
+
+    &--projects {
+        .featured {
+            &-list {
+
+                @media (min-width: var.$lg) {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 2.4rem;
+                }
+            }
+        }
     }
 }

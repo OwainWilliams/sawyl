@@ -5,7 +5,7 @@
 
 @await Html.PartialAsync("components/homepageBanner", Model)
 
-@if (Model.FeaturedBlogs.Any())
+@if (Model.FeaturedBlogs != null && Model.FeaturedBlogs.Any())
 {
 	<section class="featured--blogs">
 		<div class="container">
@@ -24,6 +24,33 @@
 						@foreach(BlogPage blogPage in Model.FeaturedBlogs)
 						{
 							@(await Html.PartialAsync("listing/blogListingCard", blogPage))
+						}
+					</ul>
+				</div><!-- col -->
+			</div><!-- row -->
+		</div><!-- container -->
+	</section>
+}
+
+@if (Model.FeaturedProjects != null && Model.FeaturedProjects.Any())
+{
+	<section class="featured--projects">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<header class="featured-header">
+						<h2 class="featured-title __animateleft">@(!string.IsNullOrWhiteSpace(Model.FeaturedProjectsTitle) ? Model.FeaturedProjectsTitle : "Featured Projects")</h2>
+						
+						@if (Model.AllProjectsLink != null)
+						{
+							<a href="@Model.AllProjectsLink.Url" class="button __animateright">View all projects</a>
+						}
+					</header>
+
+					<ul class="featured-list">
+						@foreach(ProjectPage projectPage in Model.FeaturedProjects)
+						{
+							@(await Html.PartialAsync("listing/projectListingCard", projectPage))
 						}
 					</ul>
 				</div><!-- col -->

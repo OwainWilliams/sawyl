@@ -6,8 +6,21 @@
 .list {
     @include mix.sectionStyles;
 
-    &--blog {
+    &--blog,
+    &--projects {
         @extend .list;
+    }
+
+    &--projects {
+        .list {
+            &-wrap {
+                @media (min-width: var.$lg) {
+                    display: grid;
+                    grid-template-columns: repeat(4, 1fr);
+                    gap: 2.4rem;
+                }
+            }
+        }
     }
 }
 
@@ -18,7 +31,10 @@
     &:hover,
     &:focus-within {
         .listing {
-            &-icon svg,
+            &-icon svg {
+                scale: 1.2;
+            }
+
             &-image img {
                 scale: 1.1;
             }
@@ -33,7 +49,6 @@
     &-icon {
         overflow: hidden;
         border-radius: var.$border-radius;
-        @include mix.aspectRatio(9, 8);
     }
 
     &-image {
@@ -45,27 +60,17 @@
         justify-content: center;
         align-items: center;
         background: var.$accent;
-        height: 100%;
-        width: 100%;
         @include mix.setSVGStyles;
     }
 
     &-content {
-        margin-top: 1.6rem;
-        
-        @media (min-width: var.$lg) {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            height: 100%;
-            margin-top: 0;
-        }
+        color: rgba(var.$black, 0.8);
     }
 
     &-title {
         @extend .h4;
         @include mix.linkTitle;
+        margin-bottom: 0;
 
         >a {
             color: var.$black;
@@ -110,8 +115,46 @@
         }
 
         .listing {
+            &-image,
+            &-icon {
+                @include mix.aspectRatio(9, 8);
+            }
+
+            &-icon {
+                height: 100%;
+                width: 100%;
+            }
+
+            &-content {
+                margin-top: 1.6rem;
+
+                @media (min-width: var.$lg) {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: flex-start;
+                    height: 100%;
+                    margin-top: 0;
+                }
+            }
+
             &-date {
                 margin-bottom: .4rem;
+            }
+        }
+    }
+
+    &--project {
+        @extend .listing;
+
+        .listing {
+            &-image,
+            &-icon {
+                @include mix.aspectRatio(14, 9);
+            }
+
+            &-content {
+                margin-top: .8rem;
             }
         }
     }

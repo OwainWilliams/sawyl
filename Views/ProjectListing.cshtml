@@ -16,7 +16,7 @@
                 <ul class="list-wrap">
                     @foreach (ProjectPage project in projects)
                     {
-                        <li>@project.Name</li>
+                        @(await Html.PartialAsync("listing/projectListingCard", project))
                     }
                 </ul>
             </div><!-- col -->
