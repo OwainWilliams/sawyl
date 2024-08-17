@@ -2,15 +2,16 @@
 @use '../utils/mixins' as mix;
 
 .featured {
-    @include mix.sectionSpacing;
+    @include mix.sectionStyles;
 
     &-header {
+        margin-bottom: 2.4rem;
+
         @media (min-width: var.$lg) {
             display: flex;
             justify-content: space-between;
             align-items: center;
             gap: 2.4rem;
-            margin-bottom: 2.4rem;
         }
     }
 

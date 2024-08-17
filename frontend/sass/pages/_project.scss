@@ -1,5 +1,5 @@
 @use '../utils/mixins' as mix;
 
-.blog {
+.project {
     @include mix.detailPage;
 }

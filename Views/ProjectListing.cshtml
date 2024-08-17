@@ -1,22 +1,22 @@
-﻿@inherits UmbracoViewPage<BlogListing>
+﻿@inherits UmbracoViewPage<ProjectListing>
 @{
     Layout = "Master.cshtml";
 
-    IEnumerable<BlogPage> blogs = Model.Children.OfType<BlogPage>().Where(x => x.IsPublished());
+    IEnumerable<ProjectPage> projects = Model.Children.OfType<ProjectPage>().Where(x => x.IsPublished());
 }
 
 @await Html.PartialAsync("components/banner", Model)
 
-<section class="list--blog">
+<section class="list--projects">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h2 class="visually-hidden">All blogs</h2>
+                <h2 class="visually-hidden">All projects</h2>
 
                 <ul class="list-wrap">
-                    @foreach (BlogPage blog in blogs)
+                    @foreach (ProjectPage project in projects)
                     {
-                        @(await Html.PartialAsync("listing/blogListingCard", blog))
+                        <li>@project.Name</li>
                     }
                 </ul>
             </div><!-- col -->

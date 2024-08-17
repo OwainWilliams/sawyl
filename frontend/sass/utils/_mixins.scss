@@ -90,10 +90,43 @@
 }
 
 // spacing
-@mixin sectionSpacing($mobileSpacing: 3.2rem, $desktopSpacing: 7.2rem) {
+@mixin sectionStyles($mobileSpacing: 3.2rem, $desktopSpacing: 7.2rem) {
     margin-bottom: $mobileSpacing;
 
     @media (min-width: var.$lg) {
         margin-bottom: $desktopSpacing;
+    }
+}
+
+// pages
+@mixin detailPage() {
+    @include sectionStyles;
+
+    &-wrap {
+        display: grid;
+        grid-template-columns: 100%;
+        gap: 2.4rem;
+
+        @media (min-width: var.$lg) {
+            grid-template-columns: 9fr 3fr;
+            gap: 4.8rem 12rem;
+        }
+    }
+
+    &-image {
+        @include imageWrap;
+        @include aspectRatio(1, 1);
+        
+        @media (min-width: var.$lg) {
+            grid-column: span 2;
+            @include aspectRatio(5, 2);
+        }
+    }
+
+    &-subtitle {
+        font-size: 2rem;
+        font-weight: var.$font-medium;
+        color: var.$accent;
+        margin-bottom: 1.2rem;
     }
 }

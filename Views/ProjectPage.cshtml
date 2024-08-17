@@ -1,0 +1,40 @@
+﻿@inherits UmbracoViewPage<ProjectPage>
+@{
+    Layout = "Master.cshtml";
+}
+
+<section class="project">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="project-wrap">
+                    @if (Model.ProjectImage != null)
+                    {
+                        <div class="project-image __animatedown">
+                            <picture>
+                                <img src="@Model.ProjectImage.Url()" />
+                            </picture>
+                        </div>
+                    }
+
+                    <main class="project-content __animateleft">
+                        <h1 class="project-title">@(!string.IsNullOrWhiteSpace(Model.ProjectTitle) ? Model.ProjectTitle : Model.Name)</h1>
+                        @if (!string.IsNullOrWhiteSpace(Model.ProjectSubtitle))
+                        {
+                            <p class="project-subtitle">@Model.ProjectSubtitle</p>
+                        }
+
+                        @if (Model.Content != null)
+                        {
+                            <div class="richtext">
+                                @Model.Content
+                            </div>
+                        }
+                    </main>
+
+                    @(await Html.PartialAsync("components/sidebar", Model))
+                </div>
+            </div><!-- col -->
+        </div><!-- row -->
+    </div><!-- container -->
+</section>

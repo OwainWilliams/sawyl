@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>Home Page</summary>
-	[PublishedModel("homePage")]
-	public partial class HomePage : PublishedContentModel, IBannerProperties, IContentProperties, ISEoproperties, ITaggingProperties, IVisibilityProperties
+	/// <summary>Project Page</summary>
+	[PublishedModel("projectPage")]
+	public partial class ProjectPage : PublishedContentModel, IContentProperties, IListingProperties, ISEoproperties, ISidebarProperties, ITaggingProperties, IVisibilityProperties
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
-		public new const string ModelTypeAlias = "homePage";
+		public new const string ModelTypeAlias = "projectPage";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
@@ -34,14 +34,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(publishedSnapshotAccessor, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<HomePage, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedSnapshotAccessor publishedSnapshotAccessor, Expression<Func<ProjectPage, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(publishedSnapshotAccessor), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public HomePage(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public ProjectPage(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,76 +50,52 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// All Blogs Link: The link to your blog listing page.
+		/// Project Contributors
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("allBlogsLink")]
-		public virtual global::Umbraco.Cms.Core.Models.Link AllBlogsLink => this.Value<global::Umbraco.Cms.Core.Models.Link>(_publishedValueFallback, "allBlogsLink");
+		[ImplementPropertyType("projectContributors")]
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel ProjectContributors => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "projectContributors");
 
 		///<summary>
-		/// All Projects Link
+		/// Project Creator
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("allProjectsLink")]
-		public virtual global::Umbraco.Cms.Core.Models.Link AllProjectsLink => this.Value<global::Umbraco.Cms.Core.Models.Link>(_publishedValueFallback, "allProjectsLink");
+		[ImplementPropertyType("projectCreator")]
+		public virtual string ProjectCreator => this.Value<string>(_publishedValueFallback, "projectCreator");
 
 		///<summary>
-		/// Banner Image
+		/// Project Image
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("bannerImage")]
-		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops BannerImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "bannerImage");
+		[ImplementPropertyType("projectImage")]
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ProjectImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "projectImage");
 
 		///<summary>
-		/// Featured Blogs: Select up to four featured blogs.
+		/// Project Subtitle
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("featuredBlogs")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent> FeaturedBlogs => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>>(_publishedValueFallback, "featuredBlogs");
+		[ImplementPropertyType("projectSubtitle")]
+		public virtual string ProjectSubtitle => this.Value<string>(_publishedValueFallback, "projectSubtitle");
 
 		///<summary>
-		/// Featured Blogs Title
+		/// Project Title: Enter the project's name.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("featuredBlogsTitle")]
-		public virtual string FeaturedBlogsTitle => this.Value<string>(_publishedValueFallback, "featuredBlogsTitle");
+		[ImplementPropertyType("projectTitle")]
+		public virtual string ProjectTitle => this.Value<string>(_publishedValueFallback, "projectTitle");
 
 		///<summary>
-		/// Featured Projects
+		/// Related Projects
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("featuredProjects")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent> FeaturedProjects => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>>(_publishedValueFallback, "featuredProjects");
-
-		///<summary>
-		/// Featured Projects Title
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("featuredProjectsTitle")]
-		public virtual string FeaturedProjectsTitle => this.Value<string>(_publishedValueFallback, "featuredProjectsTitle");
-
-		///<summary>
-		/// Banner Content
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("bannerContent")]
-		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString BannerContent => global::Umbraco.Cms.Web.Common.PublishedModels.BannerProperties.GetBannerContent(this, _publishedValueFallback);
-
-		///<summary>
-		/// Banner Title
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("bannerTitle")]
-		public virtual string BannerTitle => global::Umbraco.Cms.Web.Common.PublishedModels.BannerProperties.GetBannerTitle(this, _publishedValueFallback);
+		[ImplementPropertyType("relatedProjects")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent> RelatedProjects => this.Value<global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>>(_publishedValueFallback, "relatedProjects");
 
 		///<summary>
 		/// Content: The page's main content.
@@ -128,6 +104,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("content")]
 		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString Content => global::Umbraco.Cms.Web.Common.PublishedModels.ContentProperties.GetContent(this, _publishedValueFallback);
+
+		///<summary>
+		/// Listing Description: A short description used on listing items.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("listingDescription")]
+		public virtual string ListingDescription => global::Umbraco.Cms.Web.Common.PublishedModels.ListingProperties.GetListingDescription(this, _publishedValueFallback);
 
 		///<summary>
 		/// Is Followable: Set this to true if you want robots to be able to follow this page
@@ -166,6 +150,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("metaTitle")]
 		public virtual string MetaTitle => global::Umbraco.Cms.Web.Common.PublishedModels.SEoproperties.GetMetaTitle(this, _publishedValueFallback);
+
+		///<summary>
+		/// Sidebar Title
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("sidebarTitle")]
+		public virtual string SidebarTitle => global::Umbraco.Cms.Web.Common.PublishedModels.SidebarProperties.GetSidebarTitle(this, _publishedValueFallback);
 
 		///<summary>
 		/// Page Tags: Choose the tags for this page.

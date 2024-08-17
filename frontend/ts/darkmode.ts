@@ -1,5 +1,6 @@
-const darkModeBtn: HTMLButtonElement = document.querySelector('.darkmodeToggle') as HTMLButtonElement;
 const body: HTMLBodyElement = document.body as HTMLBodyElement;
+const darkModeBtn: HTMLButtonElement = document.querySelector('.darkmodeToggle') as HTMLButtonElement;
+const darkModeBtnText: HTMLSpanElement = darkModeBtn.querySelector('.button-text') as HTMLSpanElement;
 
 const toggleDarkMode = () : void => {
 
@@ -8,10 +9,13 @@ const toggleDarkMode = () : void => {
 
     if (body.classList.contains('dark-mode')) {
         localStorage.setItem('theme', 'dark');
+
+        darkModeBtnText.innerText = "Switch to light mode"
         return;
     }
-
+    
     localStorage.setItem('theme', 'light');
+    darkModeBtnText.innerText = "Switch to dark mode"
 }
 
 darkModeBtn.addEventListener('click', toggleDarkMode);
@@ -22,5 +26,6 @@ window.onload = () : void => {
     if (theme === 'dark') {
         body.classList.add('dark-mode');
         darkModeBtn.classList.add('__active');
+        darkModeBtnText.innerText = "Switch to light mode"
     }
 }

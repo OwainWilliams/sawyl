@@ -2,7 +2,7 @@
 @use '../utils/mixins' as mix;
 
 .employment {
-    @include mix.sectionSpacing;
+    @include mix.sectionStyles;
 
     &-title {
         margin-bottom: 2.4rem;

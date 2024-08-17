@@ -4,7 +4,7 @@
 @use '../components/richtext';
 
 .list {
-    @include mix.sectionSpacing;
+    @include mix.sectionStyles;
 
     &--blog {
         @extend .list;
@@ -51,11 +51,16 @@
     }
 
     &-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: flex-start;
-        height: 100%;
+        margin-top: 1.6rem;
+        
+        @media (min-width: var.$lg) {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100%;
+            margin-top: 0;
+        }
     }
 
     &-title {

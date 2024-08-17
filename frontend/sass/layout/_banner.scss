@@ -3,7 +3,7 @@
 @use '../components/richtext';
 
 .banner {
-    @include mix.sectionSpacing;
+    @include mix.sectionStyles;
     
     &-content {
         @extend .richtext;
@@ -18,9 +18,14 @@
 
         .banner {
             &-image {
+                margin-top: 2.4rem;
                 @include mix.aspectRatio(4, 3);
                 @include mix.imageDecoration;
                 @include mix.imageWrap;
+
+                @media (min-width: var.$lg) {
+                    margin-top: 0;
+                }
             }
         }
     }

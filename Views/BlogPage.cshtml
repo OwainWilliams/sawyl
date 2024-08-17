@@ -12,6 +12,8 @@
                     {
                         <div class="blog-image __animatedown">
                             <picture>
+                                <source media="(min-width:992px)" srcset="@Model.BlogImage.GetCropUrl("BlogImage")" />
+                                <source srcset="@Model.BlogImage.GetCropUrl("BlogImageMobile")" />
                                 <img src="@Model.BlogImage.GetCropUrl("BlogImage")" />
                             </picture>
                         </div>

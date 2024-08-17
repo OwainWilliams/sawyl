@@ -19,6 +19,14 @@
         relatedContent = blogPage.RelatedBlogs;
         pageType = "Blog";
     }
+
+    if (Model is ProjectPage projectPage)
+    {
+        createdType = "Created";
+        creator = projectPage.ProjectCreator;
+        relatedContent = projectPage.RelatedProjects;
+        pageType = "Project";
+    }
 }
 
 <aside class="sidebar __animateright">
