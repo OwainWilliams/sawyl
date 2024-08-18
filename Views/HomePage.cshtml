@@ -39,11 +39,11 @@
 			<div class="row">
 				<div class="col-12">
 					<header class="featured-header">
-						<h2 class="featured-title __animateleft">@(!string.IsNullOrWhiteSpace(Model.FeaturedProjectsTitle) ? Model.FeaturedProjectsTitle : "Featured Projects")</h2>
+						<h2 class="featured-title __animateup">@(!string.IsNullOrWhiteSpace(Model.FeaturedProjectsTitle) ? Model.FeaturedProjectsTitle : "Featured Projects")</h2>
 						
 						@if (Model.AllProjectsLink != null)
 						{
-							<a href="@Model.AllProjectsLink.Url" class="button __animateright">View all projects</a>
+							<a href="@Model.AllProjectsLink.Url" class="button __animateup">View all projects</a>
 						}
 					</header>
 

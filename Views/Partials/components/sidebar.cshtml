@@ -1,4 +1,5 @@
 ﻿@inherits UmbracoViewPage<ISidebarProperties>
+@using Umbraco.Cms.Core.Models.Blocks;
 
 @{
     DateTime? createdDate = null;
@@ -6,6 +7,7 @@
     string? creator = String.Empty;
     string? pageType = String.Empty;
     IEnumerable<IPublishedContent>? relatedContent = null;
+    BlockListModel? projectContributors = null;
 
     if (Model is IPublishedContent publishedContent)
     {
@@ -26,6 +28,7 @@
         creator = projectPage.ProjectCreator;
         relatedContent = projectPage.RelatedProjects;
         pageType = "Project";
+        projectContributors = projectPage.ProjectContributors;
     }
 }
 
@@ -47,6 +50,32 @@
         }
     </ul>
 
+    @if (projectContributors != null && projectContributors.Any())
+    {
+        <h2 class="sidebar-title">Project Contributors</h2>
+
+        <ul class="sidebar-list--contributors">
+            @foreach (var contributor in projectContributors)
+            {
+                if (string.IsNullOrWhiteSpace(contributor.Content.Value<string>("contributorName")))
+                {
+                    continue;
+                }
+
+                <li>
+                    @if (!string.IsNullOrWhiteSpace(contributor.Content.Value<string>("contributorUrl")))
+                    {
+                        <a href="@contributor.Content.Value("contributorUrl")" target="_blank">@contributor.Content.Value("contributorName")</a>
+                    }
+                    else
+                    {
+                        <p>@contributor.Content.Value("contributorName")</p>
+                    }
+                </li>
+            }
+        </ul>
+    }
+
     @if (relatedContent != null && relatedContent.Any())
     {
         @if (!string.IsNullOrWhiteSpace(pageType))
@@ -55,12 +84,12 @@
         }
 
         <ul class="sidebar-list">
-        @foreach (var item in relatedContent)
-        {
-            <li>
-                <a href="@item.Url()">@item.Name</a>
-            </li>
-        }
+            @foreach (var item in relatedContent)
+            {
+                <li>
+                    <a href="@item.Url()">@item.Name</a>
+                </li>
+            }
         </ul>
     }
 </aside>

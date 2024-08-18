@@ -7,14 +7,24 @@
     }
 
     &-list {
+        &--contributors {
+            @extend .sidebar-list;
+
+            li {
+                &+li {
+                    margin-top: .8rem;
+                }
+            }
+        }
+
         &+.sidebar-title {
-            margin-top: 1rem;
+            margin-top: 2.4rem;
         }
     }
 
     &-item {
         &+.sidebar-item {
-            margin-top: 1rem;
+            margin-top: .8rem;
         }
 
         >:first-child,
