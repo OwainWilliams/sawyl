@@ -7,7 +7,7 @@
     string? creator = String.Empty;
     string? pageType = String.Empty;
     IEnumerable<IPublishedContent>? relatedContent = null;
-    BlockListModel? projectContributors = null;
+    IEnumerable<IPublishedContent>? projectContributors = null;
 
     if (Model is IPublishedContent publishedContent)
     {
@@ -55,21 +55,18 @@
         <h2 class="sidebar-title">Project Contributors</h2>
 
         <ul class="sidebar-list--contributors">
-            @foreach (var contributor in projectContributors)
+            @foreach (Contributor contributor in projectContributors)
             {
-                if (string.IsNullOrWhiteSpace(contributor.Content.Value<string>("contributorName")))
-                {
-                    continue;
-                }
+                string contributorName = !string.IsNullOrWhiteSpace(contributor.ContributorName) ? contributor.ContributorName : contributor.Name;
 
                 <li>
-                    @if (!string.IsNullOrWhiteSpace(contributor.Content.Value<string>("contributorUrl")))
+                    @if (!string.IsNullOrWhiteSpace(contributor.ContributorUrl))
                     {
-                        <a href="@contributor.Content.Value("contributorUrl")" target="_blank">@contributor.Content.Value("contributorName")</a>
+                        <a href="@contributor.ContributorUrl" target="_blank">@contributorName</a>
                     }
                     else
                     {
-                        <p>@contributor.Content.Value("contributorName")</p>
+                        <p>@contributorName</p>
                     }
                 </li>
             }
