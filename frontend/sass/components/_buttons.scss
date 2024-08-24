@@ -5,6 +5,7 @@
     cursor: pointer;
     background: none;
     border: none;
+    display: block;
 
     &--icon {
         padding: 0;
@@ -39,6 +40,15 @@
 
         .light-icon {
             display: none;
+        }
+    }
+
+    &--back {
+        @extend .button;
+        margin-bottom: 1rem;
+
+        @media (min-width: var.$lg) {
+            margin-bottom: 2.4rem;
         }
     }
 }

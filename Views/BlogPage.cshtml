@@ -7,6 +7,10 @@
     <div class="container">
         <div class="row">
             <div class="col-12">
+                @if (Model.Parent != null)
+                {
+                    <a href="@Model.Parent.Url()" class="button--back __animatedown">Back to blog</a>
+                }
                 <div class="blog-wrap">
                     @if (Model.BlogImage != null)
                     {

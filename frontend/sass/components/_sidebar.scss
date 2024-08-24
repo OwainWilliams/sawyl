@@ -18,7 +18,11 @@
         }
 
         &+.sidebar-title {
-            margin-top: 2.4rem;
+            margin-top: 1rem;
+
+            @media (min-width: var.$lg) {
+                margin-top: 2.4rem;
+            }
         }
     }
 
