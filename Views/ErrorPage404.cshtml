@@ -1,0 +1,42 @@
+﻿@inherits UmbracoViewPage<ErrorPage404>
+@{
+	Layout = "Master.cshtml";
+}
+
+@await Html.PartialAsync("components/banner", Model)
+
+@if (Model.Content != null)
+{
+	<div class="error __animateup">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<div class="richtext">
+						@Model.Content
+					</div>
+				</div><!-- col -->
+			</div><!-- row -->
+		</div><!-- container -->
+	</div>
+}
+
+@if (Model.Links != null && Model.Links.Any())
+{
+	<section class="error __animateup">
+		<div class="container">
+			<div class="row">
+				<div class="col-12">
+					<h2 class="error-title">@(!string.IsNullOrWhiteSpace(Model.LinksTitle) ? Model.LinksTitle : "Useful Links")</h2>
+					<ul class="error-links">
+						@foreach (var link in Model.Links)
+						{
+							<li>
+								<a href="@link.Url()">@link.Name</a>
+							</li>
+						}
+					</ul>
+				</div><!-- col -->
+			</div><!-- row -->
+		</div><!-- container -->
+	</section>
+}

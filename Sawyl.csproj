@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Skybrud.Umbraco.Redirects" Version="13.0.4" />
     <PackageReference Include="Umbraco.Cms" Version="13.4.1" />
     <PackageReference Include="Umbraco.Community.Contentment" Version="5.0.1" />
     <PackageReference Include="uSync" Version="13.2.4" />
