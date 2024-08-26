@@ -2,14 +2,20 @@
 
 @{
     string pageName = String.Empty;
+    string bannerModifier = "banner";
 
     if (Model is IPublishedContent publishedContent)
     {
         pageName = publishedContent.Name;
     }
+
+    if (Model is ErrorPage404 errorPage)
+    {
+        bannerModifier = "banner--error";
+    }
 }
 
-<section class="banner">
+<section class="@bannerModifier">
     <div class="container">
         <div class="row">
             <div class="col-lg-10">

@@ -29,4 +29,9 @@
             }
         }
     }
+
+    &--error {
+        @extend .banner;
+        margin-bottom: 2.4rem;
+    }
 }

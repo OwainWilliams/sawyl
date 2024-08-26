@@ -1,0 +1,27 @@
+@use '../utils/variables' as var;
+@use '../utils/mixins' as mix;
+
+.error {
+    @include mix.sectionStyles;
+
+    &-title {
+        &--links {
+            margin-bottom: 0;
+        }
+    }
+
+    &-subtitle {
+        margin-bottom: 1rem;
+        font-size: 1.8rem;
+    }
+
+    &-links {
+        li {
+            font-size: 1.8rem;
+
+            &+li {
+                margin-top: .8rem;
+            }
+        }
+    }
+}
