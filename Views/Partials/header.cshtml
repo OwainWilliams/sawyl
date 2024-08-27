@@ -25,6 +25,11 @@
             </div><!-- col -->
             <div class="col-lg-8 d-flex justify-content-lg-end align-items-center">
                 @await Html.PartialAsync("navigation")
+
+                <form method="get" action="@siteSettings.SearchPage.Url">
+                    <input type="text" name="query" id="query" placeholder="Search..." autocomplete="off" />
+                    <button type="submit">Submit</button>
+                </form>
             </div><!-- col -->
         </div><!-- row -->
     </div><!-- container -->

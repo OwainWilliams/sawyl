@@ -74,6 +74,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		public virtual string MastadonLink => this.Value<string>(_publishedValueFallback, "mastadonLink");
 
 		///<summary>
+		/// Search Page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("searchPage")]
+		public virtual global::Umbraco.Cms.Core.Models.Link SearchPage => this.Value<global::Umbraco.Cms.Core.Models.Link>(_publishedValueFallback, "searchPage");
+
+		///<summary>
 		/// Twitter Link
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.4.1+d72fc5c")]
