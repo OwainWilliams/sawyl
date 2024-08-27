@@ -1,6 +1,30 @@
-﻿@using Umbraco.Cms.Web.Common.PublishedModels;
-@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<ContentModels.SearchPage>
-@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+﻿@using Sawyl.Models.ContentModels;
+@inherits UmbracoViewPage<SearchPageContentModel>
 @{
-	Layout = "Master.cshtml";
+    Layout = "Master.cshtml";
 }
+
+<section class="search-results __animateup">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="search-results-wrap">
+                    <div class="search-results-content">
+                        @if (Model.SearchRequest != null)
+                        {
+                            <p>No search results to show</p>   
+                        }
+                        else
+                        {
+                            <p>@Model.SearchRequest.Query</p>
+                        }
+                    </div>
+
+                    <aside class="search-results-sidebar">
+                        <p>Sidebar</p>
+                    </aside>
+                </div>
+            </div>
+        </div><!-- row -->
+    </div><!-- container -->
+</section>
