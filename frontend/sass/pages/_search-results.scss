@@ -1,0 +1,19 @@
+@use '../utils/variables' as var;
+@use '../utils/mixins' as mix;
+
+.search-results {
+    &-wrap {
+        @include mix.sectionStyles;
+
+        &:has(aside) {
+            display: grid;
+            grid-template-columns: 100%;
+            gap: 2.4rem;
+
+            @media (min-width: var.$lg) {
+                grid-template-columns: 2fr 10fr;
+                gap: 4.8rem 12rem;
+            }
+        }
+    }
+}

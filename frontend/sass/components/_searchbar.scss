@@ -3,33 +3,34 @@
 
 .searchbar {
     background: var.$accent;
+    position: fixed;
+    bottom: 2.4rem;
+    right: 2.4rem;
+    border-radius: 10rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    max-width: 7.1rem;
+    overflow: hidden;
+    z-index: 10;
+    transition: 
+        max-width var.$transition-mid,
+        background var.$transition-fast;
+    animation: searchbarAnimation var.$transition-slow forwards;
 
     @media (min-width: var.$lg) {
-        position: fixed;
-        bottom: 2.4rem;
         right: 2.4rem;
-        border-radius: 10rem;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        gap: 1.6rem;
-        max-width: 7.1rem;
-        overflow: hidden;
-        z-index: 10;
-        transition: 
-            max-width var.$transition-mid,
-            background var.$transition-fast;
-        animation: searchbarAnimation var.$transition-slow forwards;
+        bottom: 2.4rem;
+    }
 
-        &:hover,
-        &:focus-within {
-            background: darken(var.$accent, 5%);
-        }
+    &:hover,
+    &:focus-within {
+        background: darken(var.$accent, 5%);
     }
 
     &.__active {
-        max-width: 34.1rem;
-        padding: 0 0 0 3rem;
+        max-width: 33.5rem;
+        padding: 0 0 0 4rem;
 
         .searchbar {
             &-open {
@@ -64,7 +65,7 @@
         position: absolute;
         top: 50%;
         right: 0;
-        transform: translateY(-50%);
+        transform: translateY(calc(-50% - 4px));
     }
 
     &-form {
@@ -74,9 +75,10 @@
             font-size: 1.8rem;
             background: none;
             border: none;
-            border-bottom: 1px solid var.$white;
+            border-bottom: 1px solid rgba(var.$white, 0.5);
             color: var.$white;
             outline: none;
+            padding-right: 3.2rem;
 
             &::placeholder {
                 color: darken(var.$white, 10%);

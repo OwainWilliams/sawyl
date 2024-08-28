@@ -2,8 +2,24 @@
     p {
         line-height: 1.4;
         font-size: 1.8rem;
+    }
 
-        + p {
+    img {
+        width: auto;
+        height: auto;
+    }
+
+    figcaption {
+        margin-top: 1rem;
+        font-size: 1.4rem;
+    }
+
+    p,
+    img,
+    figure {
+        & + p,
+        & + img,
+        & + figure {
             margin-top: 1.6rem;
         }
     }

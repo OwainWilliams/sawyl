@@ -2,33 +2,98 @@
 @inherits UmbracoViewPage<SearchPageContentModel>
 @{
     Layout = "Master.cshtml";
+
+    var blogPages = Model.SearchResponse.SearchResults
+    .Select(x => Umbraco.Content(x.Id))
+    .Where(contentItem => contentItem != null && contentItem.GetType() == typeof(BlogPage));
+
+    var projectPages = Model.SearchResponse.SearchResults
+    .Select(x => Umbraco.Content(x.Id))
+    .Where(contentItem => contentItem != null && contentItem.GetType() == typeof(ProjectPage));
+
+    var otherPages = Model.SearchResponse.SearchResults
+    .Select(x => Umbraco.Content(x.Id))
+    .Where(contentItem => contentItem != null
+        && contentItem.GetType() != typeof(BlogPage)
+        && contentItem.GetType() != typeof(ProjectPage));
 }
+
+@await Html.PartialAsync("components/banner", Model)
 
 <section class="search-results __animateup">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="search-results-wrap">
-                    <aside class="search-results-sidebar">
-                        <p>Sidebar</p>
-                    </aside>
+                    @if (Model.SearchResponse.TotalResultCount > 0)
+                    {
+                        <aside class="search-results-sidebar">
+                            <h3 class="h4">Pages</h3>
+
+                            <ul class="search-results-sidebar-list">
+                                @if (blogPages.Count() > 0)
+                                {
+                                    <li>Blogs: @blogPages.Count()</li>
+                                }
+
+                                @if (projectPages.Count() > 0)
+                                {
+                                    <li>Projects: @projectPages.Count()</li>
+                                }
+
+                                @if (otherPages.Count() > 0)
+                                {
+                                    <li>Misc: @otherPages.Count()</li>
+                                }
+                            </ul>
+                        </aside>
+                    }
 
                     <div class="search-results-content">
                         @if (Model.SearchResponse.HasResults)
                         {
-                            <ul>
-                                @foreach(var item in Model.SearchResponse.SearchResults)
-                                {
-                                    var contentItem = Umbraco.Content(item.Id);
-                                    <li>
-                                        <a href="@contentItem.Url()">@contentItem.Name</a>
-                                    </li>
-                                }
-                            </ul>
+                            @if (blogPages.Count() > 0)
+                            {
+                                <h3 class="h4">Blogs</h3>
+                                <ul>
+                                    @foreach (var blogPage in blogPages)
+                                    {
+                                        <li>
+                                            <a href="@blogPage.Url()">@blogPage.Name</a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+
+                            @if (projectPages.Count() > 0)
+                            {
+                                <h3 class="h4">Projects</h3>
+                                <ul>
+                                    @foreach (ProjectPage projectPage in projectPages)
+                                    {
+                                        <li>
+                                            <a href="@projectPage.Url()">@projectPage.Name</a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
+                            
+                            @if (otherPages.Count() > 0)
+                            {
+                                <h3 class="h4">Misc Pages</h3>
+                                <ul>
+                                    @foreach (IPublishedContent otherPage in otherPages)
+                                    {
+                                        <li>
+                                            <a href="@otherPage.Url()">@otherPage.Name</a>
+                                        </li>
+                                    }
+                                </ul>
+                            }
                         }
                         else
                         {
-                            <p>No results found</p>
+                            <h3 class="search-results-none">No results found</h3>
                         }
                     </div>
                 </div>
