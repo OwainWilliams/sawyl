@@ -1,0 +1,98 @@
+@use '../utils/variables' as var;
+@use '../utils/mixins' as mix;
+
+.searchbar {
+    background: var.$accent;
+
+    @media (min-width: var.$lg) {
+        position: fixed;
+        bottom: 2.4rem;
+        right: 2.4rem;
+        border-radius: 10rem;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 1.6rem;
+        max-width: 7.1rem;
+        overflow: hidden;
+        z-index: 10;
+        transition: 
+            max-width var.$transition-mid,
+            background var.$transition-fast;
+        animation: searchbarAnimation var.$transition-slow forwards;
+
+        &:hover,
+        &:focus-within {
+            background: darken(var.$accent, 5%);
+        }
+    }
+
+    &.__active {
+        max-width: 34.1rem;
+        padding: 0 0 0 3rem;
+
+        .searchbar {
+            &-open {
+                display: block;
+            }
+
+            &-closed {
+                display: none;
+            }
+        }
+    }
+
+    &-open {
+        display: none;
+    }
+
+    &-toggle {
+        @include mix.setSVGStyles($width: 4rem, $height: 4rem);
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 1.6rem;
+        order: 2;
+    }
+
+    &-button {
+        @include mix.setSVGStyles($width: 2.4rem, $height: 2.4rem);
+        cursor: pointer;
+        background: none;
+        border: none;
+        padding: 0;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+    }
+
+    &-form {
+        position: relative;
+
+        input[type="text"] {
+            font-size: 1.8rem;
+            background: none;
+            border: none;
+            border-bottom: 1px solid var.$white;
+            color: var.$white;
+            outline: none;
+
+            &::placeholder {
+                color: darken(var.$white, 10%);
+            }
+        }
+    }
+}
+
+@keyframes searchbarAnimation {
+    0% {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

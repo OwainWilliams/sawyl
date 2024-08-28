@@ -12,7 +12,9 @@ $animation-depth-mobile: 25px;
     &.__animate {
         opacity: 1;
         transform: translate(0, 0);
-        transition: all var.$transition-slow;
+        transition: 
+            transform var.$transition-slow, 
+            opacity var.$transition-slow;
     }
 }
 
