@@ -20,6 +20,16 @@ body {
             }
         }
 
+        .button,
+        .button--back {
+            color: var.$white;
+
+            &:hover,
+            &:focus {
+                color: var.$accent;
+            }
+        }
+
         .listing {
             &-content {
                 color: rgba(var.$white, 0.8);
