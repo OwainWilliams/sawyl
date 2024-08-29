@@ -15,5 +15,56 @@
                 gap: 4.8rem 12rem;
             }
         }
+
+        &--results {
+            &+.search-results-wrap--results {
+                margin-top: 2.4rem;
+            }
+
+            ul {
+                li {
+                    &:nth-child(odd) {
+                        .listing--search {
+                            background: rgba(var.$grey, 0.6);
+                        }
+                    }
+                    
+                    &:nth-child(even) {
+                        .listing--search {
+                            background: rgba(var.$grey, 0.2);
+                        }
+                    }
+
+                    &:hover,
+                    &:focus-within {
+                        .listing--search {
+                            background: var.$accent;
+
+                            .listing {
+                                &-title > a,
+                                &-description {
+                                    color: var.$white;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    &-sidebar {
+        &-list {
+            li {
+                display: flex;
+                align-items: center;
+                gap: .4rem;
+                font-size: 1.8rem;
+
+                + li {
+                    margin-top: .8rem;
+                }
+            }
+        }
     }
 }

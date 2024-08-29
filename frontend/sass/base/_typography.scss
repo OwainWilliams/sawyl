@@ -44,6 +44,14 @@
     }
 }
 
+.h5 {
+    font-size: 1.8rem;
+
+    @media (min-width: var.$lg) {
+        font-size: 2rem;
+    }
+}
+
 @for $i from 1 through 6 {
     h#{$i} {
         @extend .h#{$i};

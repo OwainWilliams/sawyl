@@ -158,4 +158,20 @@
             }
         }
     }
+
+    &--search {
+        position: relative;
+        padding: 2.4rem;
+        transition: all var.$transition-fast;
+
+        .listing {
+            &-title {
+                @extend .h5;
+
+                >a {
+                    transition: all 0s;
+                }
+            }
+        }
+    }
 }

@@ -20,30 +20,39 @@
 
 @await Html.PartialAsync("components/banner", Model)
 
-<section class="search-results __animateup">
+<section class="search-results">
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="search-results-wrap">
                     @if (Model.SearchResponse.TotalResultCount > 0)
                     {
-                        <aside class="search-results-sidebar">
-                            <h3 class="h4">Pages</h3>
+                        <aside class="search-results-sidebar __animateleft">
+                            <h3 class="h4">Page Types</h3>
 
                             <ul class="search-results-sidebar-list">
                                 @if (blogPages.Count() > 0)
                                 {
-                                    <li>Blogs: @blogPages.Count()</li>
+                                    <li>
+                                        <a href="#blogResults">Blogs:</a>
+                                        <p>@blogPages.Count()</p>
+                                    </li>
                                 }
 
                                 @if (projectPages.Count() > 0)
                                 {
-                                    <li>Projects: @projectPages.Count()</li>
+                                    <li>
+                                        <a href="#projectResults">Projects:</a>
+                                        <p>@projectPages.Count()</p>
+                                    </li>
                                 }
 
                                 @if (otherPages.Count() > 0)
                                 {
-                                    <li>Misc: @otherPages.Count()</li>
+                                    <li>
+                                        <a href="#otherResults">Misc:</a>
+                                        <p>@otherPages.Count()</p>
+                                    </li>
                                 }
                             </ul>
                         </aside>
@@ -54,41 +63,41 @@
                         {
                             @if (blogPages.Count() > 0)
                             {
-                                <h3 class="h4">Blogs</h3>
-                                <ul>
-                                    @foreach (var blogPage in blogPages)
-                                    {
-                                        <li>
-                                            <a href="@blogPage.Url()">@blogPage.Name</a>
-                                        </li>
-                                    }
-                                </ul>
+                                <div id="blogResults" class="search-results-wrap--results __animateup">
+                                    <h3 class="h4">Blogs</h3>
+                                    <ul>
+                                        @foreach (var blogPage in blogPages)
+                                        {
+                                            @await Html.PartialAsync("listing/searchListingCard", blogPage)
+                                        }
+                                    </ul>
+                                </div>
                             }
 
                             @if (projectPages.Count() > 0)
                             {
-                                <h3 class="h4">Projects</h3>
-                                <ul>
-                                    @foreach (ProjectPage projectPage in projectPages)
-                                    {
-                                        <li>
-                                            <a href="@projectPage.Url()">@projectPage.Name</a>
-                                        </li>
-                                    }
-                                </ul>
+                                <div id="projectResults" class="search-results-wrap--results __animateup">
+                                    <h3 class="h4">Projects</h3>
+                                    <ul>
+                                        @foreach (ProjectPage projectPage in projectPages)
+                                        {
+                                            @await Html.PartialAsync("listing/searchListingCard", projectPage)
+                                        }
+                                    </ul>
+                                </div>
                             }
-                            
+
                             @if (otherPages.Count() > 0)
                             {
-                                <h3 class="h4">Misc Pages</h3>
-                                <ul>
-                                    @foreach (IPublishedContent otherPage in otherPages)
-                                    {
-                                        <li>
-                                            <a href="@otherPage.Url()">@otherPage.Name</a>
-                                        </li>
-                                    }
-                                </ul>
+                                <div id="otherResults" class="search-results-wrap--results __animateup">
+                                    <h3 class="h4">Misc Pages</h3>
+                                    <ul>
+                                        @foreach (IPublishedContent otherPage in otherPages)
+                                        {
+                                            @await Html.PartialAsync("listing/searchListingCard", otherPage)
+                                        }
+                                    </ul>
+                                </div>
                             }
                         }
                         else
