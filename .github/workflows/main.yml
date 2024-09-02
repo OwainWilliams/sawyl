@@ -5,7 +5,7 @@ on:
   push:
     branches: [ main ]
 env:
-    SolutionName: ${{ secrets.SOLUTION_NAME }}
+    SolutionName: ${{ secrets.SAWYL_SOLUTION_NAME }}
     BuildPlatform: Any CPU
     BuildConfiguration: Release
 
@@ -28,9 +28,9 @@ jobs:
         - name: Deploy to UmbHost
           uses: UmbHost/umbhost-web-deploy@v1.0.1
           with:
-            website-name: ${{ secrets.WEBSITE_NAME }}
-            server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}
-            server-username: ${{ secrets.USERNAME }}
-            server-password: ${{ secrets.PASSWORD }}
+            website-name: ${{ secrets.SAWYL_WEBSITE_NAME }}
+            server-computer-name: ${{ secrets.SAWYL_SERVER_COMPUTER_NAME }}
+            server-username: ${{ secrets.SAWYL_USERNAME }}
+            server-password: ${{ secrets.SAWYL_PASSWORD }}
             source-path: '_build'
             source-fileName: Umbraco.Web.zip
