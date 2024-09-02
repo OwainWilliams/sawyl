@@ -1,9 +1,23 @@
-- name: Deploy to UmbHost
-  uses: UmbHost/umbhost-web-deploy@v1.0.3
-  with:
-    website-name: ${{ secrets.WEBSITE_NAME }}
-    server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}
-    server-username: ${{ secrets.USERNAME }}
-    server-password: ${{ secrets.PASSWORD }}
-    source-path: '_build'
-    source-fileName: Umbraco.Web.zip
+name: Deploy to UmbHost
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Deploy to UmbHost
+        uses: UmbHost/umbhost-web-deploy@v1.0.3
+        with:
+          website-name: ${{ secrets.WEBSITE_NAME }}
+          server-computer-name: ${{ secrets.SERVER_COMPUTER_NAME }}
+          server-username: ${{ secrets.USERNAME }}
+          server-password: ${{ secrets.PASSWORD }}
+          source-path: '_build'
+          source-fileName: Umbraco.Web.zip
