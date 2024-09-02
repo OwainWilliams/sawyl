@@ -25,8 +25,10 @@ jobs:
           run: | 
             dotnet build ${{env.SolutionName}} /nologo /nr:false /p:DeployOnBuild=true /p:DeployDefaultTarget=WebPublish /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:DeleteExistingFiles=True /p:SkipInvalidConfigurations=true /p:IncludeSetAclProviderOnDestination=False /p:AutoParameterizationWebConfigConnectionStrings=False /p:platform="${{env.BuildPlatform}}" /p:configuration="${{env.BuildConfiguration}}" /p:PackageLocation="_build"
             
-        - name: List all files in the working directory
-          run: cd _build ls
+        - name: List all files in the _build directory
+          run: |
+            cd _build
+            dir
 
         - name: Deploy to UmbHost
           uses: UmbHost/umbhost-web-deploy@v1.0.1
